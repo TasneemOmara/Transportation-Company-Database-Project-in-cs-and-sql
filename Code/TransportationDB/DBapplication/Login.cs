@@ -18,8 +18,7 @@ namespace DBapplication
         Driver=4,
         Sales=5,
         TrackDesigner=6,
-        Marketing=7,
-        Others = 8
+        Marketing=7
         
     }
 
@@ -63,18 +62,47 @@ namespace DBapplication
         private void Btn_Login_Click(object sender, EventArgs e)
         {
             int privlg = controllerObj.CheckPassword_Basic(TxtBx_username.Text, TxtBx_pass.Text);
-            if (privlg > 0) // Successful Login
+            if (privlg > 0)
             {
-                _loggedin = true;
-                // Create an Object of "Provided_Functionalities" Form and Show it
-                Manager func = new Manager((Privileges) privlg);
-                func.Show(this);
+                if (privlg == 1) // Successful Login
+                {
+                    _loggedin = true;
+                    // Create an Object of "Provided_Functionalities" Form and Show it
+                    Manager func = new Manager((Privileges)privlg);
+                    func.Show(this);
+
+                }
+                else if (privlg == 2)
+                {
+
+                }
+                else if (privlg == 3)
+                {
+
+                }
+                else if (privlg == 4)
+                {
+
+                }
+                else if (privlg == 5)
+                {
+
+                }
+                else if (privlg == 6)
+                {
+
+                }
+                else if (privlg == 7)
+                {
+
+                }
                 TxtBx_pass.Clear();
                 TxtBx_username.Clear();
                 // Hide the Login Form 
                 // Don't close it because it's the startup form and the application will exit
-                this.Hide();            
+                this.Hide();
             }
+                     
             else
             {
                 MessageBox.Show("Wrong username or password");
