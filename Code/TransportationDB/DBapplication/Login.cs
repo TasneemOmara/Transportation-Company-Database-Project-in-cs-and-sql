@@ -12,9 +12,15 @@ namespace DBapplication
 {
     public enum Privileges
     {
-        Admin=1,
+        Manager=1,
         Customer=2,
-        Others = 3
+        Employee=3,
+        Driver=4,
+        Sales=5,
+        TrackDesigner=6,
+        Marketing=7,
+        Others = 8
+        
     }
 
     public partial class Login : Form
