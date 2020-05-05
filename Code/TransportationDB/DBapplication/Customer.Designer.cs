@@ -39,6 +39,8 @@
             this.button2_book = new System.Windows.Forms.Button();
             this.button3_promo = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox1_boardingPass = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -143,11 +145,29 @@
             this.checkBox1.Text = "Use Promo Code";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(109, 436);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(100, 17);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Boarding Pass";
+            // 
+            // textBox1_boardingPass
+            // 
+            this.textBox1_boardingPass.Location = new System.Drawing.Point(272, 436);
+            this.textBox1_boardingPass.Name = "textBox1_boardingPass";
+            this.textBox1_boardingPass.Size = new System.Drawing.Size(100, 22);
+            this.textBox1_boardingPass.TabIndex = 13;
+            // 
             // Customer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1126, 494);
+            this.Controls.Add(this.textBox1_boardingPass);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button3_promo);
             this.Controls.Add(this.button2_book);
@@ -180,5 +200,7 @@
         private System.Windows.Forms.Button button2_book;
         private System.Windows.Forms.Button button3_promo;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBox1_boardingPass;
     }
 }

@@ -34,31 +34,36 @@
             this.Btn_Login = new System.Windows.Forms.Button();
             this.TxtBx_username = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button1_customer = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(219, 63);
+            this.label1.Location = new System.Drawing.Point(292, 78);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 13);
+            this.label1.Size = new System.Drawing.Size(69, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Password";
             // 
             // TxtBx_pass
             // 
-            this.TxtBx_pass.Location = new System.Drawing.Point(298, 60);
+            this.TxtBx_pass.Location = new System.Drawing.Point(397, 74);
+            this.TxtBx_pass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TxtBx_pass.Name = "TxtBx_pass";
             this.TxtBx_pass.PasswordChar = '*';
-            this.TxtBx_pass.Size = new System.Drawing.Size(100, 20);
+            this.TxtBx_pass.Size = new System.Drawing.Size(132, 22);
             this.TxtBx_pass.TabIndex = 2;
             // 
             // Btn_Login
             // 
             this.Btn_Login.AutoEllipsis = true;
-            this.Btn_Login.Location = new System.Drawing.Point(247, 128);
+            this.Btn_Login.Location = new System.Drawing.Point(329, 120);
+            this.Btn_Login.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Btn_Login.Name = "Btn_Login";
-            this.Btn_Login.Size = new System.Drawing.Size(136, 23);
+            this.Btn_Login.Size = new System.Drawing.Size(181, 28);
             this.Btn_Login.TabIndex = 3;
             this.Btn_Login.Text = "&Login";
             this.Btn_Login.UseVisualStyleBackColor = true;
@@ -66,34 +71,61 @@
             // 
             // TxtBx_username
             // 
-            this.TxtBx_username.Location = new System.Drawing.Point(298, 19);
+            this.TxtBx_username.Location = new System.Drawing.Point(397, 23);
+            this.TxtBx_username.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TxtBx_username.Name = "TxtBx_username";
-            this.TxtBx_username.Size = new System.Drawing.Size(100, 20);
+            this.TxtBx_username.Size = new System.Drawing.Size(132, 22);
             this.TxtBx_username.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(219, 22);
+            this.label2.Location = new System.Drawing.Point(292, 27);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 13);
+            this.label2.Size = new System.Drawing.Size(73, 17);
             this.label2.TabIndex = 4;
             this.label2.Text = "Username";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(255, 172);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(110, 17);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "I am a Customer";
+            // 
+            // button1_customer
+            // 
+            this.button1_customer.AutoEllipsis = true;
+            this.button1_customer.Location = new System.Drawing.Point(329, 209);
+            this.button1_customer.Margin = new System.Windows.Forms.Padding(4);
+            this.button1_customer.Name = "button1_customer";
+            this.button1_customer.Size = new System.Drawing.Size(181, 28);
+            this.button1_customer.TabIndex = 6;
+            this.button1_customer.Text = "&Login";
+            this.button1_customer.UseVisualStyleBackColor = true;
+            this.button1_customer.Click += new System.EventHandler(this.button1_customer_Click);
+            // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(421, 203);
+            this.ClientSize = new System.Drawing.Size(561, 250);
+            this.Controls.Add(this.button1_customer);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.TxtBx_username);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.Btn_Login);
             this.Controls.Add(this.TxtBx_pass);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Login";
             this.Text = "Login";
             this.ResumeLayout(false);
@@ -108,5 +140,7 @@
         private System.Windows.Forms.Button Btn_Login;
         private System.Windows.Forms.TextBox TxtBx_username;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button1_customer;
     }
 }
