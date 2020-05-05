@@ -63,20 +63,23 @@ namespace DBapplication
 
         private void Btn_Login_Click(object sender, EventArgs e)
         {
-            int privlg = controllerObj.CheckPassword_Basic(TxtBx_username.Text, TxtBx_pass.Text);
+            //int privlg = controllerObj.CheckPassword_Basic(TxtBx_username.Text, TxtBx_pass.Text);
+            //commented till database is cimplete
+            int privlg = 2; //testing the customer
             if (privlg > 0)
             {
                 if (privlg == 1 || privlg == 8 || privlg == 9) // Successful Login
                 {
                     _loggedin = true;
-                    // Create an Object of "Provided_Functionalities" Form and Show it
                     Manager func = new Manager((Privileges)privlg);
                     func.Show(this);
 
                 }
                 else if (privlg == 2)
                 {
-
+                    _loggedin = true;
+                    CustomerLogin func = new CustomerLogin();
+                    func.Show(this);
                 }
                 else if (privlg == 3)
                 {

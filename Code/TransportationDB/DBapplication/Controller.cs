@@ -21,13 +21,12 @@ namespace DBapplication
         //Returns 0 in case of error
         public int CheckPassword_Basic(string username, string password)
         {
-            //commented until the database usernames be complete
+
             //Query the DB to check for username/password
-            /*string query = "SELECT priv from Users_basic where username = '" + username + "' and password='" + password + "';";            
+            string query = "SELECT priv from Users_basic where username = '" + username + "' and password='" + password + "';";            
             object p = dbMan.ExecuteScalar(query);
             if (p == null) return 0;
-            else return (int)p;*/
-            return 1; //to test the manager 
+            else return (int)p;
         }
 
         public void TerminateConnection()
