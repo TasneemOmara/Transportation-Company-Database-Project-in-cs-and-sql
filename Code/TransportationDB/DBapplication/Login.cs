@@ -12,13 +12,15 @@ namespace DBapplication
 {
     public enum Privileges
     {
-        Manager=1,
+        GeneralManager=1,
         Customer=2,
         Employee=3,
         Driver=4,
         Sales=5,
         TrackDesigner=6,
-        Marketing=7
+        Marketing=7,
+        FinancialManager=8,
+        BussesManager=9
         
     }
 
@@ -64,7 +66,7 @@ namespace DBapplication
             int privlg = controllerObj.CheckPassword_Basic(TxtBx_username.Text, TxtBx_pass.Text);
             if (privlg > 0)
             {
-                if (privlg == 1) // Successful Login
+                if (privlg == 1 || privlg == 8 || privlg == 9) // Successful Login
                 {
                     _loggedin = true;
                     // Create an Object of "Provided_Functionalities" Form and Show it

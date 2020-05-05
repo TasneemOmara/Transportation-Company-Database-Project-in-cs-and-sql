@@ -18,19 +18,39 @@ namespace DBapplication
 
         private Privileges _privilege;
 
-        public Manager(Privileges privilege = Privileges.Others)
+        public Manager(Privileges privilege)
         {
             InitializeComponent();
             this._privilege = privilege;
-            if (privilege == Privileges.Others)
+            if (privilege == Privileges.FinancialManager)
             {
-                //disable a functionality
+                this.Employees.Enabled = false;
+                this.Busses.Enabled = false;
+            }
+            else if(privilege == Privileges.BussesManager)
+            {
+                this.Employees.Enabled = false;
+                this.Finances.Enabled = false;
             }
         }
 
-        private void GetEmployerInfo_Click(object sender, EventArgs e)
+        private void Employees_Click(object sender, EventArgs e)
         {
-
+            Employees E = new Employees();
+            E.Show();
         }
+
+        private void Finances_Click(object sender, EventArgs e)
+        {
+            Finances F = new Finances();
+            F.Show();
+        }
+
+        private void Busses_Click(object sender, EventArgs e)
+        {
+            Busses B = new Busses();
+            B.Show();
+        }
+
     }
 }
