@@ -14,6 +14,10 @@ namespace DBapplication
         public Customer(int num)
         {
             InitializeComponent();
+            comboBox1_pickUp.DisplayMember = "Pick Up";
+            comboBox2_dropOff.DisplayMember = "Drop Off";
+            comboBox3_trackID.DisplayMember = "Track ID";
+
         }
 
         private void button1_avTracks_Click(object sender, EventArgs e)
@@ -31,6 +35,9 @@ namespace DBapplication
 
         }
 
+        private void button1_tracksByDate_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

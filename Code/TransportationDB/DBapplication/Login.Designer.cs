@@ -34,7 +34,6 @@
             this.Btn_Login = new System.Windows.Forms.Button();
             this.TxtBx_username = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.button1_customer = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -88,25 +87,15 @@
             this.label2.Text = "Username";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(255, 172);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(110, 17);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "I am a Customer";
-            // 
             // button1_customer
             // 
             this.button1_customer.AutoEllipsis = true;
-            this.button1_customer.Location = new System.Drawing.Point(329, 209);
+            this.button1_customer.Location = new System.Drawing.Point(329, 189);
             this.button1_customer.Margin = new System.Windows.Forms.Padding(4);
             this.button1_customer.Name = "button1_customer";
             this.button1_customer.Size = new System.Drawing.Size(181, 28);
             this.button1_customer.TabIndex = 6;
-            this.button1_customer.Text = "&Login";
+            this.button1_customer.Text = "&I am a Customer";
             this.button1_customer.UseVisualStyleBackColor = true;
             this.button1_customer.Click += new System.EventHandler(this.button1_customer_Click);
             // 
@@ -119,7 +108,6 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(561, 250);
             this.Controls.Add(this.button1_customer);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.TxtBx_username);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.Btn_Login);
@@ -140,7 +128,6 @@
         private System.Windows.Forms.Button Btn_Login;
         private System.Windows.Forms.TextBox TxtBx_username;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1_customer;
     }
 }

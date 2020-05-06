@@ -89,7 +89,8 @@ namespace DBapplication
                 }
                 else if (privlg == 6)
                 {
-
+                    TracksDesigner T = new TracksDesigner();
+                    T.Show();
                 }
                 else if (privlg == 7)
                 {
