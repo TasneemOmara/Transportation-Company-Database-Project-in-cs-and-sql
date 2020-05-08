@@ -65,7 +65,11 @@ namespace DBapplication
         {
             //int privlg = controllerObj.CheckPassword_Basic(TxtBx_username.Text, TxtBx_pass.Text);
             //commented till database is cimplete
-            int privlg = 6; //testing the Tracks designer
+            //int privlg = 6; //testing the Tracks designer
+            //int privlg = 4; //testing driver
+            //int privlg = 5; //testing sales
+            //int privlg = 7; //testing marketing
+            int privlg = 3; //testing other employees
             if (privlg > 0)
             {
                 if (privlg == 1 || privlg == 8 || privlg == 9) // Successful Login
@@ -77,15 +81,18 @@ namespace DBapplication
                 }
                 else if (privlg == 3)
                 {
-
+                    OtherEmployees func = new OtherEmployees();
+                    func.Show(this);
                 }
                 else if (privlg == 4)
                 {
-
+                    Driver func = new Driver();
+                    func.Show(this);
                 }
                 else if (privlg == 5)
                 {
-
+                    Sales func = new Sales();
+                    func.Show(this);
                 }
                 else if (privlg == 6)
                 {
@@ -94,7 +101,8 @@ namespace DBapplication
                 }
                 else if (privlg == 7)
                 {
-
+                    Marketing func = new Marketing();
+                    func.Show(this);
                 }
                 TxtBx_pass.Clear();
                 TxtBx_username.Clear();

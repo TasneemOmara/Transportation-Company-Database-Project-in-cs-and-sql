@@ -5,6 +5,7 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Data;
 using System.Windows.Forms;
+using System.Configuration;
 
 
 /// <summary>
@@ -14,11 +15,13 @@ namespace DBapplication
 {
     public class DBManager
     {
+        string DB_Connection_String = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
+
         SqlConnection myConnection;
 
         public DBManager()
         {
-            myConnection = new SqlConnection(Properties.Settings.Default.ConnectionString);
+            myConnection = new SqlConnection(DB_Connection_String);
             try
             {
                 myConnection.Open();

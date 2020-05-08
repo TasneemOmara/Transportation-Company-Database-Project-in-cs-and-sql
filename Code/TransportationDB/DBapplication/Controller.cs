@@ -160,5 +160,102 @@ namespace DBapplication
             string query = "SELECT Pno, Pname, Hours FROM Works_On INNER JOIN Project ON Pno = Pnumber WHERE Essn = "+ssn;
             return dbMan.ExecuteReader(query);
         }*/
+
+        //By-Zidan
+        public int AddPaidMoney(int Money)
+        {
+            string query = "UPDATE Department " + 
+                "SET Sales = Sales + " + Money +
+                "WHERE Name = 'Finance' ";
+            return dbMan.ExecuteNonQuery(query);
+        }
+
+        public DataTable GetReservedSeats(int number)
+        {
+            string query = "select Seats "
+                + "from Busses "
+                + "where Number = " + number; 
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable GetTrackPrice(int id)
+        {
+            string query = "Select Price "
+                + "from Tracks "
+                + "where ID = " + id;
+            return dbMan.ExecuteReader(query);
+        }
+
+        public int UpdateTrackPrice(decimal price , int id)
+        {
+            string query = "UPDATE Tracks " 
+                + "SET Price = " + price 
+                + "where ID = " + id;
+            return dbMan.ExecuteNonQuery(query);
+        }
+
+        public DataTable GetCustomerData(int phone)
+        {
+            string query = "Select Phone, Fname, Lname, Frequency, Promo_Codes "
+                + "From Customer "
+                + "Where Phone = " + phone;
+            return dbMan.ExecuteReader(query);
+        }
+
+        public int UpdatePromo(string promo , int phone)
+        {
+            string query = "UPDATE Customer "
+                + "SET Promo_Codes = '" + promo + "'"
+                + "where phone = " + phone;
+            return dbMan.ExecuteNonQuery(query);
+        }
+
+        public DataTable GetTrackData(int id)
+        {
+            string query = "Select ID, Departure_Time, Price "
+                + "From Tracks "
+                + "Where ID = " + id;
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable GetDepartureTime(int id)
+        {
+            string query = "Select Departure_Time "
+                + "From Tracks "
+                + "Where ID = " + id;
+            return dbMan.ExecuteReader(query);
+        }
+        public DataTable GetCustomerDataWithFrequency(int frequency, int radio)
+        {
+            string query = null;
+            if (radio == 2)
+            {
+                query = "Select Phone, Fname, Lname "
+                + "From Customer "
+                + "Where Frequency = " + frequency;
+            }
+            else if (radio == 1)
+            {
+                query = "Select Phone, Fname, Lname "
+                    + "From Customer "
+                    + "Where Frequency > " + frequency;
+            }
+            else if (radio == 3)
+            {
+                query = "Select Phone, Fname, Lname "
+                    + "From Customer "
+                    + "Where Frequency < " + frequency;
+            }
+            return dbMan.ExecuteReader(query);
+
+        }
+
+        public DataTable GetEmployeeData(string fname)
+        {
+            string query = "Select SSN, Fname, Lname, Address, Gender, Salary, Dno, Super_SSN "
+                + "From Employee "
+                + "Where Fname = '" + fname + "'";
+            return dbMan.ExecuteReader(query);
+        }
     }
 }
