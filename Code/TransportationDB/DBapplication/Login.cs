@@ -68,7 +68,8 @@ namespace DBapplication
             //int privlg = 6; //testing the Tracks designer
             //int privlg = 4; //testing driver
             //int privlg = 5; //testing sales
-            int privlg = 7; //testing marketing
+            //int privlg = 7; //testing marketing
+            int privlg = 3; //testing other employees
             if (privlg > 0)
             {
                 if (privlg == 1 || privlg == 8 || privlg == 9) // Successful Login
@@ -80,7 +81,8 @@ namespace DBapplication
                 }
                 else if (privlg == 3)
                 {
-
+                    OtherEmployees func = new OtherEmployees();
+                    func.Show(this);
                 }
                 else if (privlg == 4)
                 {

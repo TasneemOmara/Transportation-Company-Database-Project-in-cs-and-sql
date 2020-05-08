@@ -217,5 +217,13 @@ namespace DBapplication
                 + "Where ID = " + id;
             return dbMan.ExecuteReader(query);
         }
+
+        public DataTable GetDepartureTime(int id)
+        {
+            string query = "Select Departure_Time "
+                + "From Tracks "
+                + "Where ID = " + id;
+            return dbMan.ExecuteReader(query);
+        }
     }
 }
