@@ -37,13 +37,21 @@
             this.button2 = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.Txt_MoreThan = new System.Windows.Forms.RadioButton();
+            this.Txt_EqualTo = new System.Windows.Forms.RadioButton();
+            this.Txt_FewerThan = new System.Windows.Forms.RadioButton();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.button3 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.dataGridView4 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -123,38 +131,38 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "Get Data of Customers who travel";
             // 
-            // radioButton1
+            // Txt_MoreThan
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(242, 170);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(72, 17);
-            this.radioButton1.TabIndex = 9;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "more than";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.Txt_MoreThan.AutoSize = true;
+            this.Txt_MoreThan.Location = new System.Drawing.Point(242, 170);
+            this.Txt_MoreThan.Name = "Txt_MoreThan";
+            this.Txt_MoreThan.Size = new System.Drawing.Size(72, 17);
+            this.Txt_MoreThan.TabIndex = 9;
+            this.Txt_MoreThan.TabStop = true;
+            this.Txt_MoreThan.Text = "more than";
+            this.Txt_MoreThan.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // Txt_EqualTo
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(242, 191);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(63, 17);
-            this.radioButton2.TabIndex = 10;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "equal to";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.Txt_EqualTo.AutoSize = true;
+            this.Txt_EqualTo.Location = new System.Drawing.Point(242, 191);
+            this.Txt_EqualTo.Name = "Txt_EqualTo";
+            this.Txt_EqualTo.Size = new System.Drawing.Size(63, 17);
+            this.Txt_EqualTo.TabIndex = 10;
+            this.Txt_EqualTo.TabStop = true;
+            this.Txt_EqualTo.Text = "equal to";
+            this.Txt_EqualTo.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // Txt_FewerThan
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(242, 214);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(75, 17);
-            this.radioButton3.TabIndex = 11;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "fewer than";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.Txt_FewerThan.AutoSize = true;
+            this.Txt_FewerThan.Location = new System.Drawing.Point(242, 214);
+            this.Txt_FewerThan.Name = "Txt_FewerThan";
+            this.Txt_FewerThan.Size = new System.Drawing.Size(75, 17);
+            this.Txt_FewerThan.TabIndex = 11;
+            this.Txt_FewerThan.TabStop = true;
+            this.Txt_FewerThan.Text = "fewer than";
+            this.Txt_FewerThan.UseVisualStyleBackColor = true;
             // 
             // textBox3
             // 
@@ -172,16 +180,74 @@
             this.label4.TabIndex = 13;
             this.label4.Text = "per week";
             // 
+            // dataGridView3
+            // 
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Location = new System.Drawing.Point(485, 158);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.Size = new System.Drawing.Size(294, 133);
+            this.dataGridView3.TabIndex = 14;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(102, 214);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 15;
+            this.button3.Text = "Get Customers";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.get_customers_click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(65, 264);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(141, 13);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Enter Employee\'s First Name";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(214, 261);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(100, 20);
+            this.textBox4.TabIndex = 17;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(335, 259);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(116, 23);
+            this.button4.TabIndex = 18;
+            this.button4.Text = "Get Employee Data";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.get_employee_data_click);
+            // 
+            // dataGridView4
+            // 
+            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView4.Location = new System.Drawing.Point(68, 303);
+            this.dataGridView4.Name = "dataGridView4";
+            this.dataGridView4.Size = new System.Drawing.Size(670, 55);
+            this.dataGridView4.TabIndex = 19;
+            // 
             // OtherEmployees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dataGridView4);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.dataGridView3);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.radioButton3);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.Txt_FewerThan);
+            this.Controls.Add(this.Txt_EqualTo);
+            this.Controls.Add(this.Txt_MoreThan);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.button2);
@@ -195,6 +261,8 @@
             this.Text = "OtherEmployees";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -211,10 +279,16 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton Txt_MoreThan;
+        private System.Windows.Forms.RadioButton Txt_EqualTo;
+        private System.Windows.Forms.RadioButton Txt_FewerThan;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.DataGridView dataGridView4;
     }
 }

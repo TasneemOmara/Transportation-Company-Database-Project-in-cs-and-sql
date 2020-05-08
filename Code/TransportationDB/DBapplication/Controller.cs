@@ -225,5 +225,37 @@ namespace DBapplication
                 + "Where ID = " + id;
             return dbMan.ExecuteReader(query);
         }
+        public DataTable GetCustomerDataWithFrequency(int frequency, int radio)
+        {
+            string query = null;
+            if (radio == 2)
+            {
+                query = "Select Phone, Fname, Lname "
+                + "From Customer "
+                + "Where Frequency = " + frequency;
+            }
+            else if (radio == 1)
+            {
+                query = "Select Phone, Fname, Lname "
+                    + "From Customer "
+                    + "Where Frequency > " + frequency;
+            }
+            else if (radio == 3)
+            {
+                query = "Select Phone, Fname, Lname "
+                    + "From Customer "
+                    + "Where Frequency < " + frequency;
+            }
+            return dbMan.ExecuteReader(query);
+
+        }
+
+        public DataTable GetEmployeeData(string fname)
+        {
+            string query = "Select SSN, Fname, Lname, Address, Gender, Salary, Dno, Super_SSN "
+                + "From Employee "
+                + "Where Fname = '" + fname + "'";
+            return dbMan.ExecuteReader(query);
+        }
     }
 }
