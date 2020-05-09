@@ -468,7 +468,7 @@ namespace DBapplication
        
             string query = "Select Arrival_Time " +
             " from Tracks, [Track Station Relation] " +
-            " Where Track_ID = ID and Station_Location = '" + station + "' and ID = " + ID + " and is not NULL ";
+            " Where Track_ID = ID and Station_Location = '" + station + "' and ID = " + ID;
             return dbMan.ExecuteReader(query);
         }
 

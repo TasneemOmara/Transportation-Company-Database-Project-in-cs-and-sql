@@ -77,8 +77,16 @@ namespace DBapplication
 
         private void ReservedSeats_Click_1(object sender, EventArgs e)
         {
-            DataRow seats = controllerObj.SelectReservedSeats_TrackID_BusNumber(last_clicked_ID_RS, Convert.ToInt64(ComboBox_BusNum_ReservedSeats.SelectedValue)).Rows[0];
-            textBox1_Reserved.Text = Convert.ToString(seats["Seats"]);
+            if(ComboBox_BusNum_ReservedSeats.SelectedValue == null)
+            {
+                MessageBox.Show("Please choose bus Number");
+            }
+            else
+            {
+                DataRow seats = controllerObj.SelectReservedSeats_TrackID_BusNumber(last_clicked_ID_RS, Convert.ToInt64(ComboBox_BusNum_ReservedSeats.SelectedValue)).Rows[0];
+                textBox1_Reserved.Text = Convert.ToString(seats["Seats"]);
+            }
+
         }
 
         private void Departure_Click_1(object sender, EventArgs e)
@@ -90,9 +98,17 @@ namespace DBapplication
 
         private void Arrival_Click(object sender, EventArgs e)
         {
-            DataRow AT = controllerObj.Select_ArrivalTime_ID(last_clicked_ID_AT, Convert.ToString(ComboBox_Stations_ArrivalTime.SelectedValue)).Rows[0];
-            DateTime Date = Convert.ToDateTime(AT["Arrival_Time"]);
-            dateTimePicker2DT.Value = Date;
+            if (ComboBox_Stations_ArrivalTime.SelectedValue == null)
+            {
+                MessageBox.Show("Please choose Station Location");
+            }
+            else
+            {
+                DataRow AT = controllerObj.Select_ArrivalTime_ID(last_clicked_ID_AT, Convert.ToString(ComboBox_Stations_ArrivalTime.SelectedValue)).Rows[0];
+                DateTime Date = Convert.ToDateTime(AT["Arrival_Time"]);
+                dateTimePicker1AT.Value = Date;
+            }
+
         }
     }
 }
