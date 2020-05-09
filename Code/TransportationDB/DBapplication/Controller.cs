@@ -304,7 +304,13 @@ namespace DBapplication
 
         public DataTable TracksSearchByDate(DateTime searchdate)
         {
-            string query = "SELECT [Track_ID], [Order], [Station_Location], [Departure_Time], [Arrival_Time] FROM Tracks INNER JOIN [Track Station Relation] ON [Tracks].[ID] = [Track Station Relation].[Track_ID] WHERE Convert(DATE, Departure_Time) = '" + searchdate + "'" + "Order by ID ASC, [Order] ASC";
+            string query = "SELECT [Track_ID], [Order], [Station_Location], [Price], [Departure_Time], [Arrival_Time] FROM Tracks INNER JOIN [Track Station Relation] ON [Tracks].[ID] = [Track Station Relation].[Track_ID] WHERE Convert(DATE, Departure_Time) = '" + searchdate + "'" + "Order by ID ASC, [Order] ASC";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable SearchRoutes(DateTime searchdate ,string pickup, string dropoff)
+        {
+            string query = "SELECT * FROM (SELECT [Track_ID], [Order], [Station_Location], [Price], [Departure_Time], [Arrival_Time] FROM Tracks INNER JOIN [Track Station Relation] ON [Tracks].[ID] = [Track Station Relation].[Track_ID] WHERE Convert(DATE, Departure_Time) = '" + searchdate + "') AS NarrowedDown WHERE [Station_Location] = '" + dropoff + "' AND [Order] > 1";
             return dbMan.ExecuteReader(query);
         }
 
@@ -375,11 +381,8 @@ namespace DBapplication
         }
 
         
-       /* public DataTable SearchRoutes(string pickup, string dropoff)
-        {
-            string query = "Select [Fname] From [Customer] WHERE [Phone] = " + CustomerNumber + "";
-            return dbMan.ExecuteReader(query);
-        }*/
+ 
+
         //Tasneem
 
         public DataTable SelectDepNum_and_Name()
