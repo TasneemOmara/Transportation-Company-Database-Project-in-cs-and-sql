@@ -9,7 +9,7 @@ namespace DBapplication
 {
     public class Controller
     {
-        private DBManager dbMan; // A Reference of type DBManager 
+        private DBManager dbMan; // A Reference of type DBManager
                                  // (Initially NULL; NO DBManager Object is created yet)
 
         public Controller()
@@ -87,8 +87,8 @@ namespace DBapplication
              + "FROM "
              + "Department D, Project P, Dept_Locations L "
              + "where "
-             + "P.Dnum=D.Dnumber and L.Dnumber=D.Dnumber and L.Dlocation='" + loc + "';"; 
-            
+             + "P.Dnum=D.Dnumber and L.Dnumber=D.Dnumber and L.Dlocation='" + loc + "';";
+
             return dbMan.ExecuteReader(query);
         }
 
@@ -162,7 +162,7 @@ namespace DBapplication
         }*/
 
         //By-Zidan
-        public int AddPaidMoney(int Money)
+        public int AddPaidMoney(decimal Money)
         {
             string query = "UPDATE Department " +
                 "SET Sales = Sales + " + Money +
@@ -258,6 +258,50 @@ namespace DBapplication
             return dbMan.ExecuteReader(query);
         }
 
+        public DataTable GetDepartureByName(string fname, string lname)
+        {
+            string query = "Select Departure_Time "
+                + "From Employee as E, Drives as D , Busses as B , [Tracks Busses Relation] as TBR, Tracks as T "
+                + "Where E.Fname = '" + fname + "' and E.Lname = '" + lname + "' and E.SSN = D.Driver_SSN and D.Bus_Number = B.Number "
+                + " and B.Number = TBR.Bus_Number and TBR.Track_ID = T.ID ";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable GetScheduleByName(string fname,  string lname)
+        {
+            string query = " Select TSR.Station_Location , TSR.Track_ID , TSR.[Order] , TSR.Arrival_Time "
+                + " From Employee as E, Drives as D , Busses as B , [Tracks Busses Relation] as TBR, Tracks as T , [Track Station Relation] as TSR "
+                + " Where E.Fname = '" + fname + "' and E.Lname = '" + lname + "' and E.SSN = D.Driver_SSN and D.Bus_Number = B.Number "
+                + " and B.Number = TBR.Bus_Number and TBR.Track_ID = T.ID and T.ID = TSR.Track_ID "
+                + " Order By TSR.[Order] ";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable CheckBoardingPass(int boarding_pass , string fname , string lname)
+        {
+            string query = "Select R.Boarding_Pass "
+                + " From Employee as E ,  Drives as D , Busses as B , Rides as R "
+                + " Where E.Fname = '" + fname + "' and E.Lname = '" + lname + "' and E.SSN = D.Driver_SSN and D.Bus_Number = B.Number "
+                + " and B.Number = R.Bus_Num and R.Boarding_Pass = " + boarding_pass ;
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable GetReservedSeatsByName(string fname , string lname)
+        {
+            string query = "Select B.Seats "
+                + "From Employee as E, Drives as D , Busses as B "
+                + "Where E.Fname = '" + fname + "' and E.Lname = '" + lname + "' and E.SSN = D.Driver_SSN and D.Bus_Number = B.Number ";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable GetStationArrivalTime(string location)
+        {
+            string query = "Select TSR.Arrival_Time "
+                + "From Stations as S , [Track Station Relation] as TSR "
+                + "Where S.Location = '" + location + "' and S.Location = TSR.Station_Location ";
+            return dbMan.ExecuteReader(query);
+        }
+
 
         public int SearchForCustomerByNumber(int phone)
         {
@@ -270,7 +314,7 @@ namespace DBapplication
             {
                 return 0;
             }
-            
+
             //not a customer, should signup
             else
             {
@@ -304,7 +348,13 @@ namespace DBapplication
 
         public DataTable TracksSearchByDate(DateTime searchdate)
         {
-            string query = "SELECT [Track_ID], [Order], [Station_Location], [Departure_Time], [Arrival_Time] FROM Tracks INNER JOIN [Track Station Relation] ON [Tracks].[ID] = [Track Station Relation].[Track_ID] WHERE Convert(DATE, Departure_Time) = '" + searchdate + "'" + "Order by ID ASC, [Order] ASC";
+            string query = "SELECT [Track_ID], [Order], [Station_Location], [Price], [Departure_Time], [Arrival_Time] FROM Tracks INNER JOIN [Track Station Relation] ON [Tracks].[ID] = [Track Station Relation].[Track_ID] WHERE Convert(DATE, Departure_Time) = '" + searchdate + "'" + "Order by ID ASC, [Order] ASC";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable SearchRoutes(DateTime searchdate ,string pickup, string dropoff)
+        {
+            string query = "SELECT * FROM (SELECT [Track_ID], [Order], [Station_Location], [Price], [Departure_Time], [Arrival_Time] FROM Tracks INNER JOIN [Track Station Relation] ON [Tracks].[ID] = [Track Station Relation].[Track_ID] WHERE Convert(DATE, Departure_Time) = '" + searchdate + "') AS NarrowedDown WHERE [Station_Location] = '" + dropoff + "' AND [Order] > 1";
             return dbMan.ExecuteReader(query);
         }
 
@@ -348,7 +398,7 @@ namespace DBapplication
                 return int.Parse(dtBP.Rows[0][0].ToString());
         }
 
-        
+
         public int PreviousPromoChecker(int CustomerNumber)
         {
             string query = "Select [Promo_Codes] From [Customer] WHERE [Phone] =" + CustomerNumber + "";
@@ -374,12 +424,9 @@ namespace DBapplication
             return dbMan.ExecuteReader(query);
         }
 
-        
-       /* public DataTable SearchRoutes(string pickup, string dropoff)
-        {
-            string query = "Select [Fname] From [Customer] WHERE [Phone] = " + CustomerNumber + "";
-            return dbMan.ExecuteReader(query);
-        }*/
+
+
+
         //Tasneem
 
         public DataTable SelectDepNum_and_Name()

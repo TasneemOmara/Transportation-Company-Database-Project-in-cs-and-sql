@@ -39,9 +39,11 @@ namespace DBapplication
         {
             string pickup = comboBox1_pickUp.Text;
             string dropoff = comboBox2_dropOff.Text;
+            DateTime pickeddate = dateTimePicker1.Value;
+            DataTable dtSearchResultRoutes = controllerObj.SearchRoutes(pickeddate, pickup, dropoff);
+            dataGridView1.DataSource = dtSearchResultRoutes;
+            dataGridView1.Refresh();
 
-            //DataTable SearchByStations = controllerObj.SearchRoutes(pickup, dropoff);
-            //dataGridView1.DataSource = SearchByStations;
         }
 
         private void button2_book_Click(object sender, EventArgs e)
@@ -124,8 +126,9 @@ namespace DBapplication
 
         private void button1_tracksByDate_Click(object sender, EventArgs e)
         {
-            
             DateTime PickedDate;
+         
+            //Available Tracks ID
             PickedDate = dateTimePicker1.Value;
             DataTable dtSearchResult = controllerObj.TracksSearchByDate(PickedDate);
             dataGridView1.DataSource = dtSearchResult;
@@ -157,6 +160,58 @@ namespace DBapplication
 
 
 
+            //Narrowed Down Option for PickUp
+            SqlConnection conn4 = new SqlConnection(DB_Connection_String);
+            DataSet ds4 = new DataSet();
+            try
+            {
+                conn4.Open();
+                SqlCommand cmd4 = new SqlCommand("Select Distinct [Station_Location] From [Track Station Relation] WHERE Convert(DATE, [Arrival_Time]) = '" + PickedDate + "' AND [Order] < 3", conn4);
+                SqlDataAdapter NarrowedDownPickup = new SqlDataAdapter();
+                NarrowedDownPickup.SelectCommand = cmd4;
+                NarrowedDownPickup.Fill(ds4);
+                comboBox1_pickUp.DisplayMember = "Station_Location";
+                comboBox1_pickUp.ValueMember = "Station_Location";
+                comboBox1_pickUp.DataSource = ds4.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                //Exception Message
+            }
+            finally
+            {
+                conn4.Close();
+                conn4.Dispose();
+            }
+
+            
+            //Narrowed Down Option for DropOff
+            SqlConnection conn5 = new SqlConnection(DB_Connection_String);
+            DataSet ds5 = new DataSet();
+            try
+            {
+                conn5.Open();
+                SqlCommand cmd5 = new SqlCommand("Select Distinct [Station_Location] From [Track Station Relation] WHERE Convert(DATE, [Arrival_Time]) = '" + PickedDate + "' AND [Order] > 1", conn5);
+                SqlDataAdapter NarrowedDownDropoff = new SqlDataAdapter();
+                NarrowedDownDropoff.SelectCommand = cmd5;
+                NarrowedDownDropoff.Fill(ds5);
+                comboBox2_dropOff.DisplayMember = "Station_Location";
+                comboBox2_dropOff.ValueMember = "Station_Location";
+                comboBox2_dropOff.DataSource = ds5.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                //Exception Message
+            }
+            finally
+            {
+                conn4.Close();
+                conn4.Dispose();
+            }
+
+            
+
+
 
         }
 
@@ -167,51 +222,6 @@ namespace DBapplication
 
         private void Customer_Load(object sender, EventArgs e)
         {
-            SqlConnection conn = new SqlConnection(DB_Connection_String);
-            DataSet ds = new DataSet();
-            try
-            {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand("select Name from Stations", conn);
-                SqlDataAdapter da = new SqlDataAdapter();
-                da.SelectCommand = cmd;
-                da.Fill(ds);
-                comboBox1_pickUp.DisplayMember = "Name";
-                comboBox1_pickUp.ValueMember = "Name";
-                comboBox1_pickUp.DataSource = ds.Tables[0];
-            }
-            catch (Exception ex)
-            {
-                //Exception Message
-            }
-            finally
-            {
-                conn.Close();
-                conn.Dispose();
-            }
-
-            SqlConnection conn2 = new SqlConnection(DB_Connection_String);
-            DataSet ds2 = new DataSet();
-            try
-            {
-                conn2.Open();
-                SqlCommand cmd2 = new SqlCommand("select Name from Stations", conn2);
-                SqlDataAdapter da2 = new SqlDataAdapter();
-                da2.SelectCommand = cmd2;
-                da2.Fill(ds2);
-                comboBox2_dropOff.DisplayMember = "Name";
-                comboBox2_dropOff.ValueMember = "Name";
-                comboBox2_dropOff.DataSource = ds2.Tables[0];
-            }
-            catch (Exception ex)
-            {
-                //Exception Message
-            }
-            finally
-            {
-                conn2.Close();
-                conn2.Dispose();
-            }
 
             //Setting DatePicker
             dateTimePicker1.Value = DateTime.Today;
