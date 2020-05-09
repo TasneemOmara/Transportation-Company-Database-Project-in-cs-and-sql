@@ -23,7 +23,7 @@ namespace DBapplication
         {
 
             //Query the DB to check for username/password
-            string query = "SELECT priv from Users_basic where username = '" + username + "' and password='" + password + "';";            
+            string query = "SELECT priv from Users_basic where username = '" + username + "' and password='" + password + "';";
             object p = dbMan.ExecuteScalar(query);
             if (p == null) return 0;
             else return (int)p;
@@ -164,7 +164,7 @@ namespace DBapplication
         //By-Zidan
         public int AddPaidMoney(int Money)
         {
-            string query = "UPDATE Department " + 
+            string query = "UPDATE Department " +
                 "SET Sales = Sales + " + Money +
                 "WHERE Name = 'Finance' ";
             return dbMan.ExecuteNonQuery(query);
@@ -174,7 +174,7 @@ namespace DBapplication
         {
             string query = "select Seats "
                 + "from Busses "
-                + "where Number = " + number; 
+                + "where Number = " + number;
             return dbMan.ExecuteReader(query);
         }
 
@@ -186,10 +186,10 @@ namespace DBapplication
             return dbMan.ExecuteReader(query);
         }
 
-        public int UpdateTrackPrice(decimal price , int id)
+        public int UpdateTrackPrice(decimal price, int id)
         {
-            string query = "UPDATE Tracks " 
-                + "SET Price = " + price 
+            string query = "UPDATE Tracks "
+                + "SET Price = " + price
                 + "where ID = " + id;
             return dbMan.ExecuteNonQuery(query);
         }
@@ -202,7 +202,7 @@ namespace DBapplication
             return dbMan.ExecuteReader(query);
         }
 
-        public int UpdatePromo(string promo , int phone)
+        public int UpdatePromo(string promo, int phone)
         {
             string query = "UPDATE Customer "
                 + "SET Promo_Codes = '" + promo + "'"
@@ -255,6 +255,142 @@ namespace DBapplication
             string query = "Select SSN, Fname, Lname, Address, Gender, Salary, Dno, Super_SSN "
                 + "From Employee "
                 + "Where Fname = '" + fname + "'";
+            return dbMan.ExecuteReader(query);
+        }
+
+        //Tasneem
+
+        public DataTable SelectDepNum_and_Name()
+        {
+            string query = "SELECT ID,Name FROM Department;";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable SelectEmp_SSN()
+        {
+            string query = "SELECT SSN FROM Employee;";
+            return dbMan.ExecuteReader(query);
+        }
+
+
+        public DataTable SelectAllEmp()
+        {
+            string query = "SELECT * FROM Employee;";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable SelectEmp_fromSSN(long ssn)
+        {
+            string query = "SELECT * FROM Employee Where SSN=" + ssn;
+            return dbMan.ExecuteReader(query);
+        }
+
+        public int InsertEmployee(long ssn, string fname, string lname, string address, string Gender, double salary, int dno, long super_ssn)
+        {
+            string query = "INSERT INTO Employee (SSN, Fname, Lname, Address, Gender, Salary, Dno, Super_SSN) VALUES (" +
+                "" + ssn + "," +
+                "'" + fname + "'," +
+                "'" + lname + "'," +
+                "'" + address + "'," +
+                "'" + Gender + "'," +
+                "" + salary + "," +
+                "" + dno + "," +
+                "" + super_ssn + ""
+                + ")";
+
+            return dbMan.ExecuteNonQuery(query);
+        }
+
+        public int DeleteEmployee(long ssn)
+        {
+            string query = "DELETE FROM Employee WHERE SSN=" + ssn;
+            return dbMan.ExecuteNonQuery(query);
+        }
+
+        public int UpdateEmployee(long ssn, string fname, string lname, string address, string Gender, double salary, int dno, long super_ssn)
+        {
+            string query = "UPDATE Employee SET " +
+                "Fname='" + fname + "'," +
+                "Lname='" + lname + "'," +
+                "Address='" + address + "'," +
+                "Gender='" + Gender + "'," +
+                "Salary=" + salary + "," +
+                "Dno=" + dno + "," +
+                "Super_SSN=" + super_ssn +
+                "WHERE SSN=" + ssn;
+            return dbMan.ExecuteNonQuery(query);
+        }
+
+        public DataTable SelectMonthsFromFinance()
+        {
+            string query = "SELECT Month FROM Finances";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable SelectExpenses(int Month)
+        {
+            string query = "SELECT Expenses FROM Finances WHERE Month=" + Month;
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable SelectSales(int Month)
+        {
+            string query = "SELECT Sales FROM Finances WHERE Month=" + Month;
+            return dbMan.ExecuteReader(query);
+        }
+
+        public int AddExpenses(int month, double expenses)
+        {
+            string query = "UPDATE Finances SET " + "Expenses=" + expenses + "WHERE Month=" + month;
+
+            return dbMan.ExecuteNonQuery(query);
+        }
+
+        public int AddSales(int month, double sales)
+        {
+            string query = "UPDATE Finances SET " + "Sales=" + sales + "WHERE Month=" + month;
+
+            return dbMan.ExecuteNonQuery(query);
+        }
+
+        public DataTable SelectAllTracks()
+        {
+            string query = "SELECT * FROM Tracks;";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable SelectTracksID()
+        {
+            string query = "SELECT ID FROM Tracks;";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable SelectBussesNum()
+        {
+            string query = "SELECT Number FROM Busses;";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable SelectStations()
+        {
+            string query = "SELECT Location FROM Stations;";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable SelectReservedSeats_TrackID_BusNumber(int ID, int BusNo)
+        {
+            string query = "Select Seats" +
+            "from Busses, Tracks, [Tracks Busses Relation]" +
+            "Where Number = Bus_Number and Track_ID = ID and " +
+            "ID =" + ID + "and Number =" + BusNo;
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable Select_DepartureTime_ID(int ID)
+        {
+            string query = "Select Departure_Time" +
+            "from Tracks" +
+            "Where ID =" + ID;
             return dbMan.ExecuteReader(query);
         }
     }
