@@ -33,9 +33,17 @@
             this.Expenses = new System.Windows.Forms.Button();
             this.Sales = new System.Windows.Forms.Button();
             this.Profit = new System.Windows.Forms.Button();
-            this.ExpensesTextBox = new System.Windows.Forms.TextBox();
-            this.SalesTextBox = new System.Windows.Forms.TextBox();
-            this.ProfitTextBox = new System.Windows.Forms.TextBox();
+            this.Textbox_expenses = new System.Windows.Forms.TextBox();
+            this.Textbox_sales = new System.Windows.Forms.TextBox();
+            this.Textbox_profit = new System.Windows.Forms.TextBox();
+            this.button1AddExpenses = new System.Windows.Forms.Button();
+            this.textBox1_add_exp = new System.Windows.Forms.TextBox();
+            this.textBox2_addSales = new System.Windows.Forms.TextBox();
+            this.button2AddSales = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button1_reset = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -58,7 +66,7 @@
             // 
             // Expenses
             // 
-            this.Expenses.Location = new System.Drawing.Point(94, 189);
+            this.Expenses.Location = new System.Drawing.Point(37, 177);
             this.Expenses.Name = "Expenses";
             this.Expenses.Size = new System.Drawing.Size(204, 46);
             this.Expenses.TabIndex = 2;
@@ -68,7 +76,7 @@
             // 
             // Sales
             // 
-            this.Sales.Location = new System.Drawing.Point(94, 268);
+            this.Sales.Location = new System.Drawing.Point(37, 268);
             this.Sales.Name = "Sales";
             this.Sales.Size = new System.Drawing.Size(204, 46);
             this.Sales.TabIndex = 3;
@@ -78,7 +86,7 @@
             // 
             // Profit
             // 
-            this.Profit.Location = new System.Drawing.Point(94, 353);
+            this.Profit.Location = new System.Drawing.Point(37, 353);
             this.Profit.Name = "Profit";
             this.Profit.Size = new System.Drawing.Size(204, 46);
             this.Profit.TabIndex = 4;
@@ -86,35 +94,114 @@
             this.Profit.UseVisualStyleBackColor = true;
             this.Profit.Click += new System.EventHandler(this.Profit_Click);
             // 
-            // ExpensesTextBox
+            // Textbox_expenses
             // 
-            this.ExpensesTextBox.Location = new System.Drawing.Point(472, 201);
-            this.ExpensesTextBox.Name = "ExpensesTextBox";
-            this.ExpensesTextBox.Size = new System.Drawing.Size(189, 22);
-            this.ExpensesTextBox.TabIndex = 5;
+            this.Textbox_expenses.Location = new System.Drawing.Point(268, 189);
+            this.Textbox_expenses.Name = "Textbox_expenses";
+            this.Textbox_expenses.Size = new System.Drawing.Size(189, 22);
+            this.Textbox_expenses.TabIndex = 5;
             // 
-            // SalesTextBox
+            // Textbox_sales
             // 
-            this.SalesTextBox.Location = new System.Drawing.Point(472, 280);
-            this.SalesTextBox.Name = "SalesTextBox";
-            this.SalesTextBox.Size = new System.Drawing.Size(189, 22);
-            this.SalesTextBox.TabIndex = 6;
+            this.Textbox_sales.Location = new System.Drawing.Point(268, 280);
+            this.Textbox_sales.Name = "Textbox_sales";
+            this.Textbox_sales.Size = new System.Drawing.Size(189, 22);
+            this.Textbox_sales.TabIndex = 6;
             // 
-            // ProfitTextBox
+            // Textbox_profit
             // 
-            this.ProfitTextBox.Location = new System.Drawing.Point(472, 365);
-            this.ProfitTextBox.Name = "ProfitTextBox";
-            this.ProfitTextBox.Size = new System.Drawing.Size(189, 22);
-            this.ProfitTextBox.TabIndex = 7;
+            this.Textbox_profit.Location = new System.Drawing.Point(268, 365);
+            this.Textbox_profit.Name = "Textbox_profit";
+            this.Textbox_profit.Size = new System.Drawing.Size(189, 22);
+            this.Textbox_profit.TabIndex = 7;
+            // 
+            // button1AddExpenses
+            // 
+            this.button1AddExpenses.Location = new System.Drawing.Point(524, 218);
+            this.button1AddExpenses.Name = "button1AddExpenses";
+            this.button1AddExpenses.Size = new System.Drawing.Size(204, 46);
+            this.button1AddExpenses.TabIndex = 8;
+            this.button1AddExpenses.Text = "Add Expenses";
+            this.button1AddExpenses.UseVisualStyleBackColor = true;
+            this.button1AddExpenses.Click += new System.EventHandler(this.button1AddExpenses_Click);
+            // 
+            // textBox1_add_exp
+            // 
+            this.textBox1_add_exp.Location = new System.Drawing.Point(790, 230);
+            this.textBox1_add_exp.Name = "textBox1_add_exp";
+            this.textBox1_add_exp.Size = new System.Drawing.Size(189, 22);
+            this.textBox1_add_exp.TabIndex = 9;
+            // 
+            // textBox2_addSales
+            // 
+            this.textBox2_addSales.Location = new System.Drawing.Point(790, 325);
+            this.textBox2_addSales.Name = "textBox2_addSales";
+            this.textBox2_addSales.Size = new System.Drawing.Size(189, 22);
+            this.textBox2_addSales.TabIndex = 11;
+            // 
+            // button2AddSales
+            // 
+            this.button2AddSales.Location = new System.Drawing.Point(524, 313);
+            this.button2AddSales.Name = "button2AddSales";
+            this.button2AddSales.Size = new System.Drawing.Size(204, 46);
+            this.button2AddSales.TabIndex = 10;
+            this.button2AddSales.Text = "Add Sales";
+            this.button2AddSales.UseVisualStyleBackColor = true;
+            this.button2AddSales.Click += new System.EventHandler(this.button2AddSales_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(817, 206);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(132, 17);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Input the Expenses:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(817, 297);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(106, 17);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Input the Sales:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(396, 59);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(127, 17);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Choose the Month:";
+            // 
+            // button1_reset
+            // 
+            this.button1_reset.Location = new System.Drawing.Point(719, 67);
+            this.button1_reset.Name = "button1_reset";
+            this.button1_reset.Size = new System.Drawing.Size(204, 46);
+            this.button1_reset.TabIndex = 16;
+            this.button1_reset.Text = "Reset Fields";
+            this.button1_reset.UseVisualStyleBackColor = true;
+            this.button1_reset.Click += new System.EventHandler(this.button1_reset_Click);
             // 
             // Finances
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.ProfitTextBox);
-            this.Controls.Add(this.SalesTextBox);
-            this.Controls.Add(this.ExpensesTextBox);
+            this.ClientSize = new System.Drawing.Size(1033, 450);
+            this.Controls.Add(this.button1_reset);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.textBox2_addSales);
+            this.Controls.Add(this.button2AddSales);
+            this.Controls.Add(this.textBox1_add_exp);
+            this.Controls.Add(this.button1AddExpenses);
+            this.Controls.Add(this.Textbox_profit);
+            this.Controls.Add(this.Textbox_sales);
+            this.Controls.Add(this.Textbox_expenses);
             this.Controls.Add(this.Profit);
             this.Controls.Add(this.Sales);
             this.Controls.Add(this.Expenses);
@@ -134,8 +221,16 @@
         private System.Windows.Forms.Button Expenses;
         private System.Windows.Forms.Button Sales;
         private System.Windows.Forms.Button Profit;
-        private System.Windows.Forms.TextBox ExpensesTextBox;
-        private System.Windows.Forms.TextBox SalesTextBox;
-        private System.Windows.Forms.TextBox ProfitTextBox;
+        private System.Windows.Forms.TextBox Textbox_expenses;
+        private System.Windows.Forms.TextBox Textbox_sales;
+        private System.Windows.Forms.TextBox Textbox_profit;
+        private System.Windows.Forms.Button button1AddExpenses;
+        private System.Windows.Forms.TextBox textBox1_add_exp;
+        private System.Windows.Forms.TextBox textBox2_addSales;
+        private System.Windows.Forms.Button button2AddSales;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button1_reset;
     }
 }
