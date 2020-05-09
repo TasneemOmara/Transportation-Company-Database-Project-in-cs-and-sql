@@ -29,7 +29,7 @@ namespace DBapplication
 
         private void get_reserved_seats_click(object sender, EventArgs e)
         {
-            DataTable dt = controllerObj.GetReservedSeats(Convert.ToInt32(textBox3.Text));
+            DataTable dt = controllerObj.GetReservedSeatsByName(Convert.ToString(textBox2.Text), Convert.ToString(textBox4.Text));
             dataGridView3.DataSource = dt;
             dataGridView3.Refresh();
         }
@@ -52,14 +52,14 @@ namespace DBapplication
         private void check_boarding_pass_click(object sender, EventArgs e)
         {
             DataTable result = controllerObj.CheckBoardingPass(Convert.ToInt32(textBox5.Text) , Convert.ToString(textBox2.Text), Convert.ToString(textBox4.Text));
-            result.;
-            //if 
-            /*
-            if (result > 0)
-                MessageBox.Show("Correct Boarding Pass - Allow Customer To Enter the Bus");
-            else
+            //MessageBox.Show(result.ToString());
+            //Equals(Convert.ToInt32(textBox5.Text)
+            if (result == null)
                 MessageBox.Show("Worng Boarding Pass - Do Not Allow Customer To Enter the Bus");
-                */
+            else
+                MessageBox.Show("Correct Boarding Pass - Allow Customer To Enter the Bus");
+
+
         }
     }
 }

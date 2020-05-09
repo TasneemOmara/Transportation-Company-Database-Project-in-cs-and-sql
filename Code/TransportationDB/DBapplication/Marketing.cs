@@ -38,5 +38,10 @@ namespace DBapplication
             dataGridView1.DataSource = dt;
             dataGridView1.Refresh();
         }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

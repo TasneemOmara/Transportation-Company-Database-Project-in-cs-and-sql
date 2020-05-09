@@ -286,6 +286,22 @@ namespace DBapplication
             return dbMan.ExecuteReader(query);
         }
 
+        public DataTable GetReservedSeatsByName(string fname , string lname)
+        {
+            string query = "Select B.Seats "
+                + "From Employee as E, Drives as D , Busses as B "
+                + "Where E.Fname = '" + fname + "' and E.Lname = '" + lname + "' and E.SSN = D.Driver_SSN and D.Bus_Number = B.Number ";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable GetStationArrivalTime(string location)
+        {
+            string query = "Select TSR.Arrival_Time "
+                + "From Stations as S , [Track Station Relation] as TSR "
+                + "Where S.Location = '" + location + "' and S.Location = TSR.Station_Location ";
+            return dbMan.ExecuteReader(query);
+        }
+
 
         public int SearchForCustomerByNumber(int phone)
         {
