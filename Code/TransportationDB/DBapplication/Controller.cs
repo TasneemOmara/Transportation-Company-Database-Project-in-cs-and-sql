@@ -162,7 +162,7 @@ namespace DBapplication
         }*/
 
         //By-Zidan
-        public int AddPaidMoney(int Money)
+        public int AddPaidMoney(decimal Money)
         {
             string query = "UPDATE Department " + 
                 "SET Sales = Sales + " + Money +
@@ -255,6 +255,34 @@ namespace DBapplication
             string query = "Select SSN, Fname, Lname, Address, Gender, Salary, Dno, Super_SSN "
                 + "From Employee "
                 + "Where Fname = '" + fname + "'";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable GetDepartureByName(string fname, string lname)
+        {
+            string query = "Select Departure_Time "
+                + "From Employee as E, Drives as D , Busses as B , [Tracks Busses Relation] as TBR, Tracks as T "
+                + "Where E.Fname = '" + fname + "' and E.Lname = '" + lname + "' and E.SSN = D.Driver_SSN and D.Bus_Number = B.Number "
+                + " and B.Number = TBR.Bus_Number and TBR.Track_ID = T.ID ";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable GetScheduleByName(string fname,  string lname)
+        {
+            string query = " Select TSR.Station_Location , TSR.Track_ID , TSR.[Order] , TSR.Arrival_Time "
+                + " From Employee as E, Drives as D , Busses as B , [Tracks Busses Relation] as TBR, Tracks as T , [Track Station Relation] as TSR "
+                + " Where E.Fname = '" + fname + "' and E.Lname = '" + lname + "' and E.SSN = D.Driver_SSN and D.Bus_Number = B.Number "
+                + " and B.Number = TBR.Bus_Number and TBR.Track_ID = T.ID and T.ID = TSR.Track_ID "
+                + " Order By TSR.[Order] ";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable CheckBoardingPass(int boarding_pass , string fname , string lname)
+        {
+            string query = "Select R.Boarding_Pass "
+                + " From Employee as E ,  Drives as D , Busses as B , Rides as R "
+                + " Where E.Fname = '" + fname + "' and E.Lname = '" + lname + "' and E.SSN = D.Driver_SSN and D.Bus_Number = B.Number " 
+                + " and B.Number = R.Bus_Num and R.Boarding_Pass = " + boarding_pass ;
             return dbMan.ExecuteReader(query);
         }
     }

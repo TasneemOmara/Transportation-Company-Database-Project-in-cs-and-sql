@@ -20,7 +20,7 @@ namespace DBapplication
 
         private void pay_click(object sender, EventArgs e)
         {
-            int result = controllerObj.AddPaidMoney(Convert.ToInt32(textBox1.Text));
+            int result = controllerObj.AddPaidMoney(Convert.ToDecimal(textBox1.Text));
             if (result > 0)
                 MessageBox.Show("Paid Money Added Successfully");
             else
@@ -32,6 +32,34 @@ namespace DBapplication
             DataTable dt = controllerObj.GetReservedSeats(Convert.ToInt32(textBox3.Text));
             dataGridView3.DataSource = dt;
             dataGridView3.Refresh();
+        }
+
+        private void Driver_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void get_my_schedule_click(object sender, EventArgs e)
+        {
+            DataTable dt = controllerObj.GetDepartureByName(Convert.ToString(textBox2.Text), Convert.ToString(textBox4.Text));
+            dataGridView1.DataSource = dt;
+            dataGridView1.Refresh();
+            DataTable dt2 = controllerObj.GetScheduleByName(Convert.ToString(textBox2.Text), Convert.ToString(textBox4.Text));
+            dataGridView2.DataSource = dt2;
+            dataGridView2.Refresh();
+        }
+
+        private void check_boarding_pass_click(object sender, EventArgs e)
+        {
+            DataTable result = controllerObj.CheckBoardingPass(Convert.ToInt32(textBox5.Text) , Convert.ToString(textBox2.Text), Convert.ToString(textBox4.Text));
+            result.;
+            //if 
+            /*
+            if (result > 0)
+                MessageBox.Show("Correct Boarding Pass - Allow Customer To Enter the Bus");
+            else
+                MessageBox.Show("Worng Boarding Pass - Do Not Allow Customer To Enter the Bus");
+                */
         }
     }
 }
