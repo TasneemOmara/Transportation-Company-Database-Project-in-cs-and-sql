@@ -477,7 +477,15 @@ namespace DBapplication
 
         public DataTable SelectAllTracks()
         {
-            string query = "SELECT * FROM Tracks;";
+            string query = "SELECT * FROM Tracks, Busses, Stations, [Tracks Busses Relation] as TBR, [Track Station Relation] as TSR" +
+            " WHERE Number = Bus_Number and TBR.Track_ID = ID and TSR.Station_Location  = Location";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable SelectAllTracksBusses()
+        {
+            string query = "SELECT * FROM Tracks, Busses, [Tracks Busses Relation] " +
+            " WHERE Number = Bus_Number and Track_ID = ID";
             return dbMan.ExecuteReader(query);
         }
 
@@ -487,33 +495,45 @@ namespace DBapplication
             return dbMan.ExecuteReader(query);
         }
 
-        public DataTable SelectBussesNum()
+        public DataTable SelectBussesNum(int TrackID)
         {
-            string query = "SELECT Number FROM Busses;";
+            string query = "SELECT Number FROM Busses, [Tracks Busses Relation] WHERE Bus_Number = Number and Track_ID= " + TrackID;
             return dbMan.ExecuteReader(query);
         }
 
-        public DataTable SelectStations()
+        public DataTable SelectStations(int ID)
         {
-            string query = "SELECT Location FROM Stations;";
+            string query = "SELECT Location FROM Stations, Tracks, [Track Station Relation]  WHERE  " +
+                " Station_Location = Location and Track_ID = ID and Track_ID="+ ID;
             return dbMan.ExecuteReader(query);
         }
 
-        public DataTable SelectReservedSeats_TrackID_BusNumber(int ID, int BusNo)
+        public DataTable SelectReservedSeats_TrackID_BusNumber(int ID, long BusNo)
         {
-            string query = "Select Seats" +
-            "from Busses, Tracks, [Tracks Busses Relation]" +
-            "Where Number = Bus_Number and Track_ID = ID and " +
-            "ID =" + ID + "and Number =" + BusNo;
+            string query = "Select Seats " +
+            " from Busses, Tracks, [Tracks Busses Relation] " +
+            " Where Number = Bus_Number and Track_ID = ID and " +
+            " ID =" + ID + " and Number =" + BusNo;
             return dbMan.ExecuteReader(query);
         }
 
         public DataTable Select_DepartureTime_ID(int ID)
         {
-            string query = "Select Departure_Time" +
-            "from Tracks" +
-            "Where ID =" + ID;
+            string query = "Select Departure_Time " +
+            " from Tracks " +
+            " Where ID =" + ID;
             return dbMan.ExecuteReader(query);
         }
+
+        public DataTable Select_ArrivalTime_ID(int ID, string station)
+        {
+       
+            string query = "Select Arrival_Time " +
+            " from Tracks, [Track Station Relation] " +
+            " Where Track_ID = ID and Station_Location = '" + station + "' and ID = " + ID + " and is not NULL ";
+            return dbMan.ExecuteReader(query);
+        }
+
+        
     }
 }
