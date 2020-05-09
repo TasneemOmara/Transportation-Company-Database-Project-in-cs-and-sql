@@ -438,6 +438,11 @@ namespace DBapplication
             string query = "SELECT Number FROM Busses, [Tracks Busses Relation] WHERE Bus_Number = Number and Track_ID= " + TrackID;
             return dbMan.ExecuteReader(query);
         }
+        public DataTable SelectBussesNum()
+        {
+            string query = "SELECT Number FROM Busses ";
+            return dbMan.ExecuteReader(query);
+        }
 
         public DataTable SelectStations(int ID)
         {
@@ -472,6 +477,22 @@ namespace DBapplication
             return dbMan.ExecuteReader(query);
         }
 
-        
+        public DataTable GetLastMaintainence(long bus)
+        {
+            string query = "Select Last_Maintained "
+                + "From Busses "
+                + "Where Number = " + bus;
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable SelectMaintainer(long bus)
+        {
+            string query = "Select Fname, Lname "
+                + "From Busses, Maintain, Employee "
+                + "Where Number = " + bus + " and Bus_NO = Number and Emp_Ssn = SSN ";
+            return dbMan.ExecuteReader(query);
+        }
+
+
     }
 }

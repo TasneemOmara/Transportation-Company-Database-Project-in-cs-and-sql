@@ -33,6 +33,10 @@ namespace DBapplication
             last_clicked_ID_AT = Convert.ToInt32(ComboBox_TrackID_AT.SelectedValue);
             last_clicked_ID_RS = Convert.ToInt32(Combobox_trackID_ReservedSeats.SelectedValue); ;
 
+            comboBox1_bus_lastmaintained.DataSource = controllerObj.SelectBussesNum();
+            comboBox1_bus_lastmaintained.DisplayMember = "Number";
+            comboBox1_bus_lastmaintained.ValueMember = "Number";
+
         }
 
 
@@ -110,5 +114,22 @@ namespace DBapplication
             }
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DataRow LM = controllerObj.GetLastMaintainence(Convert.ToInt64(comboBox1_bus_lastmaintained.SelectedValue)).Rows[0];
+            DateTime Date = Convert.ToDateTime(LM["Last_Maintained"]);
+            dateTimePicker1_lastmain.Value = Date;
+        }
+
+        private void button2_maintainer_Click(object sender, EventArgs e)
+        {
+            DataRow LM = controllerObj.SelectMaintainer(Convert.ToInt64(comboBox1_bus_lastmaintained.SelectedValue)).Rows[0];
+            string fn = Convert.ToString(LM["Fname"]);
+            string ln = Convert.ToString(LM["Lname"]);
+            textBox1_maintainer.Text = fn + " " + ln;
+
+        }
+
     }
 }
