@@ -23,3 +23,7 @@ C:\Users\T\Desktop\DB\Transportation-Company-Database-Project-in-cs-and-sql\Code
 C:\Users\T\Desktop\DB\Transportation-Company-Database-Project-in-cs-and-sql\Code\TransportationDB\DBapplication\obj\x86\Debug\DBapplication.Customer.resources
 C:\Users\T\Desktop\DB\Transportation-Company-Database-Project-in-cs-and-sql\Code\TransportationDB\DBapplication\obj\x86\Debug\DBapplication.CustomerLogin.resources
 C:\Users\T\Desktop\DB\Transportation-Company-Database-Project-in-cs-and-sql\Code\TransportationDB\DBapplication\obj\x86\Debug\DBapplication.TracksDesigner.resources
+C:\Users\T\Desktop\DB\Transportation-Company-Database-Project-in-cs-and-sql\Code\TransportationDB\DBapplication\obj\x86\Debug\DBapplication.Driver.resources
+C:\Users\T\Desktop\DB\Transportation-Company-Database-Project-in-cs-and-sql\Code\TransportationDB\DBapplication\obj\x86\Debug\DBapplication.Marketing.resources
+C:\Users\T\Desktop\DB\Transportation-Company-Database-Project-in-cs-and-sql\Code\TransportationDB\DBapplication\obj\x86\Debug\DBapplication.OtherEmployees.resources
+C:\Users\T\Desktop\DB\Transportation-Company-Database-Project-in-cs-and-sql\Code\TransportationDB\DBapplication\obj\x86\Debug\DBapplication.Sales.resources
