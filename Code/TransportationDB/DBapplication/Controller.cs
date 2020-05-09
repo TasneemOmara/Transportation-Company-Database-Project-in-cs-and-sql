@@ -258,6 +258,128 @@ namespace DBapplication
             return dbMan.ExecuteReader(query);
         }
 
+
+        public int SearchForCustomerByNumber(int phone)
+        {
+            string query = "INSERT INTO Customer (Phone) VALUES ("
+                            + phone
+                            + ")";
+
+            //failed to insert (already a customer)
+            if (dbMan.ExecuteNonQuery(query) == 0)
+            {
+                return 0;
+            }
+            
+            //not a customer, should signup
+            else
+            {
+                query = "Delete From Customer Where Phone = "
+                            + phone
+                            + "";
+                dbMan.ExecuteNonQuery(query);
+                return 1;
+            }
+        }
+
+        public int CustomerSignUp(int phone, string fn, string ln)
+        {
+            string query = "INSERT INTO Customer (Phone, Fname, Lname) VALUES (" +
+                "" + phone + " , " +
+                "'" + fn + "' , " +
+                "'" + ln + "'"
+                + ")";
+
+            //failed to insert (already a customer)
+            if (dbMan.ExecuteNonQuery(query) == 0)
+            {
+                return 0;
+            }
+
+            else
+            {
+                return 1;
+            }
+        }
+
+        public DataTable TracksSearchByDate(DateTime searchdate)
+        {
+            string query = "SELECT [Track_ID], [Order], [Station_Location], [Departure_Time], [Arrival_Time] FROM Tracks INNER JOIN [Track Station Relation] ON [Tracks].[ID] = [Track Station Relation].[Track_ID] WHERE Convert(DATE, Departure_Time) = '" + searchdate + "'" + "Order by ID ASC, [Order] ASC";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable NarrowDownOptionsByDate(DateTime searchdate)
+        {
+            string query = "Select Distinct [Station_Location] From [Track Station Relation] WHERE Convert(DATE, [Arrival_Time]) = '" + searchdate + "'";
+            return dbMan.ExecuteReader(query);
+        }
+
+
+
+        public DataTable CheckSeats(int TrackID)
+        {
+            string query = "Select [Seats] from [Busses] WHERE [Number] = (Select [Bus_Number] From [Tracks Busses Relation] WHERE [Track_ID] = " + TrackID + ")";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public int BookRide(int TrackID, int CustomerNumber)
+        {
+            string query = "Insert Into [Rides] ([Bus_Num], [Customer_Phone])"
+                         + "Values "
+                         + "((Select[Bus_Number] From[Tracks Busses Relation] WHERE[Track_ID] = " + TrackID + "),"  + CustomerNumber + ")";
+            return dbMan.ExecuteNonQuery(query);
+        }
+
+        public DataTable GetBoardingPass(int CustomerNumber)
+        {
+            string query = "Select [Boarding_Pass] From [Rides] WHERE [Customer_Phone] = " + CustomerNumber + "";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public int IfBookedBefore(int CustomerNumber)
+        {
+            string query = "Select [Boarding_Pass] From [Rides] WHERE [Customer_Phone] =" + CustomerNumber + "";
+            DataTable dtBP = dbMan.ExecuteReader(query);
+
+            if (dtBP == null)
+                return 0;
+
+            else
+                return int.Parse(dtBP.Rows[0][0].ToString());
+        }
+
+        
+        public int PreviousPromoChecker(int CustomerNumber)
+        {
+            string query = "Select [Promo_Codes] From [Customer] WHERE [Phone] =" + CustomerNumber + "";
+            DataTable dtpc = dbMan.ExecuteReader(query);
+
+            string check = (dtpc.Rows[0][0].ToString());
+            if (string.IsNullOrWhiteSpace(check))
+                return 0;
+
+            else
+                return 1;
+        }
+
+        public void UpdateUserPromo(string newpromo, int CustomerNumber)
+        {
+            string query = "UPDATE [Customer] Set [Promo_Codes] = '" + newpromo + "' Where [Phone] =" + CustomerNumber + "";
+            dbMan.ExecuteReader(query);
+        }
+
+        public DataTable GetCustomerNameByPhone(int CustomerNumber)
+        {
+            string query = "Select [Fname] From [Customer] WHERE [Phone] = " + CustomerNumber + "";
+            return dbMan.ExecuteReader(query);
+        }
+
+        
+       /* public DataTable SearchRoutes(string pickup, string dropoff)
+        {
+            string query = "Select [Fname] From [Customer] WHERE [Phone] = " + CustomerNumber + "";
+            return dbMan.ExecuteReader(query);
+        }*/
         //Tasneem
 
         public DataTable SelectDepNum_and_Name()
