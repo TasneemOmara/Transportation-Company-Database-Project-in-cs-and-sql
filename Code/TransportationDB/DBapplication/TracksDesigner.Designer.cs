@@ -51,6 +51,7 @@
             this.comboBox7_at1 = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.textBox3_price = new System.Windows.Forms.TextBox();
+            this.button5_Logout = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1_addstation
@@ -247,11 +248,22 @@
             this.textBox3_price.Size = new System.Drawing.Size(124, 22);
             this.textBox3_price.TabIndex = 23;
             // 
+            // button5_Logout
+            // 
+            this.button5_Logout.Location = new System.Drawing.Point(1047, 33);
+            this.button5_Logout.Name = "button5_Logout";
+            this.button5_Logout.Size = new System.Drawing.Size(103, 41);
+            this.button5_Logout.TabIndex = 49;
+            this.button5_Logout.Text = "Log Out";
+            this.button5_Logout.UseVisualStyleBackColor = true;
+            this.button5_Logout.Click += new System.EventHandler(this.button5_Logout_Click);
+            // 
             // TracksDesigner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1176, 644);
+            this.Controls.Add(this.button5_Logout);
             this.Controls.Add(this.textBox3_price);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.comboBox5_at3);
@@ -307,5 +319,6 @@
         private System.Windows.Forms.ComboBox comboBox7_at1;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBox3_price;
+        private System.Windows.Forms.Button button5_Logout;
     }
 }
