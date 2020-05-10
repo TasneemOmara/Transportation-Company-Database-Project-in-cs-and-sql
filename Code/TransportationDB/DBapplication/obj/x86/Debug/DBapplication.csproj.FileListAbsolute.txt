@@ -29,3 +29,4 @@ C:\Users\T\Desktop\DB\Transportation-Company-Database-Project-in-cs-and-sql\Code
 C:\Users\T\Desktop\DB\Transportation-Company-Database-Project-in-cs-and-sql\Code\TransportationDB\DBapplication\obj\x86\Debug\DBapplication.Sales.resources
 C:\Users\T\Desktop\DB\Transportation-Company-Database-Project-in-cs-and-sql\Code\TransportationDB\DBapplication\obj\x86\Debug\DBapplication.Statistics.resources
 C:\Users\T\Desktop\DB\Transportation-Company-Database-Project-in-cs-and-sql\Code\TransportationDB\DBapplication\obj\x86\Debug\DBapplication.UserSignUp.resources
+C:\Users\T\Desktop\DB\Transportation-Company-Database-Project-in-cs-and-sql\Code\TransportationDB\DBapplication\obj\x86\Debug\DBapplication.Departments.resources
