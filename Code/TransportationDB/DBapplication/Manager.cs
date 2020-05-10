@@ -38,19 +38,28 @@ namespace DBapplication
         {
             Employees E = new Employees();
             E.Show();
+            this.Hide();
         }
 
         private void Finances_Click(object sender, EventArgs e)
         {
             Finances F = new Finances();
             F.Show();
+            this.Hide();
         }
 
         private void Busses_Click(object sender, EventArgs e)
         {
             Busses B = new Busses();
             B.Show();
+            this.Hide();
         }
 
+        private void show_statistics_click(object sender, EventArgs e)
+        {
+            Statistics S = new Statistics();
+            S.Show();
+            this.Hide();
+        }
     }
 }

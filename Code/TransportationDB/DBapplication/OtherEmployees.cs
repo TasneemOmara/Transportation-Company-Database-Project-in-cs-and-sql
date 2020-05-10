@@ -27,6 +27,9 @@ namespace DBapplication
 
         private void get_arrival_time_click(object sender, EventArgs e)
         {
+            DataTable dt = controllerObj.GetStationArrivalTime(textBox2.Text) ;
+            dataGridView2.DataSource = dt;
+            dataGridView2.Refresh();
             
         }
 
@@ -59,6 +62,18 @@ namespace DBapplication
             DataTable dt = controllerObj.GetEmployeeData(Convert.ToString(textBox4.Text));
             dataGridView4.DataSource = dt;
             dataGridView4.Refresh();
+        }
+
+        private void OtherEmployees_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Login func = new Login();
+            func.Show(this);
         }
     }
 }

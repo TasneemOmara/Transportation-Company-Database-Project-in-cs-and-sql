@@ -135,11 +135,23 @@
     <Compile Include="Sales.Designer.cs">
       <DependentUpon>Sales.cs</DependentUpon>
     </Compile>
+    <Compile Include="Statistics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Statistics.Designer.cs">
+      <DependentUpon>Statistics.cs</DependentUpon>
+    </Compile>
     <Compile Include="TracksDesigner.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TracksDesigner.Designer.cs">
       <DependentUpon>TracksDesigner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserSignUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserSignUp.Designer.cs">
+      <DependentUpon>UserSignUp.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Busses.resx">
       <DependentUpon>Busses.cs</DependentUpon>
@@ -183,8 +195,14 @@
     <EmbeddedResource Include="Sales.resx">
       <DependentUpon>Sales.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Statistics.resx">
+      <DependentUpon>Statistics.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TracksDesigner.resx">
       <DependentUpon>TracksDesigner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserSignUp.resx">
+      <DependentUpon>UserSignUp.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">

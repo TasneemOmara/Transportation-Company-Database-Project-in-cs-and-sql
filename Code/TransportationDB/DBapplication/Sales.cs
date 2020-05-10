@@ -54,5 +54,12 @@ namespace DBapplication
             else
                 MessageBox.Show("Failed To Update Promo-Code");
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Login func = new Login();
+            func.Show(this);
+        }
     }
 }

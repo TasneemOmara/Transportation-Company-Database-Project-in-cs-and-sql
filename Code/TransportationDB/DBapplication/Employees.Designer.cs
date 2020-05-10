@@ -55,6 +55,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.comboBox4_gender = new System.Windows.Forms.ComboBox();
             this.button1_update = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -293,11 +294,22 @@
             this.button1_update.UseVisualStyleBackColor = true;
             this.button1_update.Click += new System.EventHandler(this.button1_update_Click);
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(952, 12);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(103, 41);
+            this.button5.TabIndex = 43;
+            this.button5.Text = "Log Out";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // Employees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1080, 760);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.button1_update);
             this.Controls.Add(this.comboBox4_gender);
             this.Controls.Add(this.label10);
@@ -362,5 +374,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox comboBox4_gender;
         private System.Windows.Forms.Button button1_update;
+        private System.Windows.Forms.Button button5;
     }
 }

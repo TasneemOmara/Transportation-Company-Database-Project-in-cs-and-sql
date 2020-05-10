@@ -21,13 +21,13 @@ namespace DBapplication
         Marketing=7,
         FinancialManager=8,
         BussesManager=9
-        
+
     }
 
     public partial class Login : Form
     {
         private bool _loggedin = false;
-        private Controller controllerObj; // A Reference of type Controller 
+        private Controller controllerObj; // A Reference of type Controller
                                           // (Initially NULL; NO Controller Object is created yet)
 
         public Login()
@@ -36,17 +36,17 @@ namespace DBapplication
             controllerObj = new Controller(); // Create the Controler Object
         }
 
-/*        //checks the username/password and returns the privlidges associated with this user
+       //checks the username/password and returns the privlidges associated with this user
         //Returns 0 in case of error
         private int CheckPassword_Basic(string username, string password)
         {
             controllerObj = new Controller();
-            return controllerObj.CheckPassword_Basic(username, password); 
+            return controllerObj.CheckPassword_Basic(username, password);
             //return password == "1234";  //Password can be saved in the DB encrypted rather than being hardcoded.
                                         //Even if it is stored in a DB, keeping passwords in it's raw form is prone to attacks
         }
-        
-  */
+
+ 
         private bool CheckPassword_Hash(string password)
         {
             const string salt = "r4Nd0m_5A1t";  //They are concatenated to the password to protects against rainbow table attacks.
@@ -55,7 +55,7 @@ namespace DBapplication
             string hashed = Convert.ToBase64String(algorithm.ComputeHash(Encoding.UTF8.GetBytes(passwordandsalt)));
             return hashed == "w+0fHMgNFl7jSDJ7WpvRfIQLzfflSi9pPNdiQg+v4/E=";    //The Hash should be stored in the DB
                                                                                 //Hashes needs a lot of time to be reversed (Brute Force, Dictionary Attacks, Rainbow Tables, etc.)
-                                                                                //So even if they are stolen from the database, 
+                                                                                //So even if they are stolen from the database,
                                                                                 //you should have enough time to notify users to change it
                                                                                 //before the attacker can use them.
         }
@@ -63,14 +63,15 @@ namespace DBapplication
 
         private void Btn_Login_Click(object sender, EventArgs e)
         {
-            //int privlg = controllerObj.CheckPassword_Basic(TxtBx_username.Text, TxtBx_pass.Text);
+            int privlg = controllerObj.CheckPassword_Basic(TxtBx_username.Text, TxtBx_pass.Text);
             //commented till database is cimplete
             //int privlg = 6; //testing the Tracks designer
             //int privlg = 4; //testing driver
             //int privlg = 5; //testing sales
             //int privlg = 7; //testing marketing
-            int privlg = 1; //testing Manager
-            
+            //int privlg = 3; //testing other employees
+            //int privlg = 1; //testing Manager
+
             if (privlg > 0)
             {
                 if (privlg == 1 || privlg == 8 || privlg == 9) // Successful Login
@@ -107,18 +108,18 @@ namespace DBapplication
                 }
                 TxtBx_pass.Clear();
                 TxtBx_username.Clear();
-                // Hide the Login Form 
+                // Hide the Login Form
                 // Don't close it because it's the startup form and the application will exit
                 this.Hide();
             }
-                     
+
             else
             {
                 MessageBox.Show("Wrong username or password");
-            }            
+            }
         }
 
-        
+
         //private void Login_FormClosing(object sender, FormClosingEventArgs e)
         //{
             //if (e.CloseReason == CloseReason.UserClosing && !_loggedin)
@@ -136,6 +137,12 @@ namespace DBapplication
                 _loggedin = true;
                 CustomerLogin func = new CustomerLogin();
                 func.Show(this);
+        }
+
+        private void button1_signup_Click(object sender, EventArgs e)
+        {
+            UserSignUp func = new UserSignUp();
+            func.Show(this);
         }
     }
 }
