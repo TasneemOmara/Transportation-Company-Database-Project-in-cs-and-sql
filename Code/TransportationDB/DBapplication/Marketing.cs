@@ -16,11 +16,19 @@ namespace DBapplication
         {
             InitializeComponent();
             controllerObj = new Controller();
+            DataTable dt = controllerObj.SelectTracksID();
+            comboBox1.DataSource = dt;
+            comboBox1.DisplayMember = "ID";
+            comboBox1.ValueMember = "ID";
+            DataTable dt2 = controllerObj.SelectBussesNum();
+            comboBox2.DataSource = dt2;
+            comboBox2.DisplayMember = "Number";
+            comboBox2.ValueMember = "Number";
         }
 
         private void get_reserved_seats_click(object sender, EventArgs e)
         {
-            DataTable dt = controllerObj.GetReservedSeats(Convert.ToInt32(textBox3.Text));
+            DataTable dt = controllerObj.GetReservedSeats(Convert.ToInt32(comboBox2.SelectedValue));
             dataGridView3.DataSource = dt;
             dataGridView3.Refresh();
         }
@@ -34,7 +42,7 @@ namespace DBapplication
 
         private void get_track_data_click(object sender, EventArgs e)
         {
-            DataTable dt = controllerObj.GetTrackData(Convert.ToInt32(textBox1.Text));
+            DataTable dt = controllerObj.GetTrackData(Convert.ToInt32(comboBox1.SelectedValue));
             dataGridView1.DataSource = dt;
             dataGridView1.Refresh();
         }

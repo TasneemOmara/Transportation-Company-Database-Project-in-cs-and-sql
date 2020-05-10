@@ -669,6 +669,61 @@ namespace DBapplication
             return dbMan.ExecuteReader(query);
         }
 
+        public DataTable GetTracks()
+        {
+            string query = " select * from Tracks ";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable GetLoginInfoByUsername(string username)
+        {
+            string query = " Select [User_Name] , Password from Login Where [User_Name] = '" + username + "' ";
+            return dbMan.ExecuteReader(query);
+        }
+        public DataTable SelectAllDep()
+        {
+            string query = "Select Name, ID, Fname, Lname "
+                + "From Department, Employee Where Manager_Ssn = SSN ";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public int InsertDep(string name,long ssn)
+        {
+            string query = "INSERT INTO Department (Name, Manager_Ssn) VALUES (" +
+                "'" + name + "'," +
+                "" + ssn + ")";
+
+            return dbMan.ExecuteNonQuery(query);
+        }
+
+        public int UpdatePassword(string username , string newpass)
+        {
+            string query = "Update Login "
+                + "Set Password =  '" + newpass + "' "
+                + "Where [User_Name] = '" + username + "' " ;
+            return dbMan.ExecuteNonQuery(query);
+        }
+
+        public int MakeAdmin(string username)
+        {
+            string query = "Update Login Set [Privelege] = 100 Where [User_Name] = '" + username + "' ";
+            return dbMan.ExecuteNonQuery(query);
+        }
+        public int UpdateDep(string name, int id, long ssn)
+        {
+            string query = "UPDATE Department " +
+                " SET name = '" + name + "', " +
+                " Manager_Ssn=" + ssn +
+                " WHERE ID = " + id;
+            return dbMan.ExecuteNonQuery(query);
+        }
+
+        public DataTable SelectAllMngrs()
+        {
+            string query = "Select DISTINCT SSN, Fname, Lname "
+                + "From Employee ";
+            return dbMan.ExecuteReader(query);
+        }
 
         public void AddBuss(int PlatesNumber, int SeatsNumber, string BusType)
         {
@@ -703,3 +758,12 @@ namespace DBapplication
         }
     }
 }
+        public DataTable SelectDepInfoByID(int ID)
+        {
+            string query = "Select Name, Manager_Ssn "
+                + "From Department " +
+                " Where ID=" + ID;
+            return dbMan.ExecuteReader(query);
+        }
+    }
+    }

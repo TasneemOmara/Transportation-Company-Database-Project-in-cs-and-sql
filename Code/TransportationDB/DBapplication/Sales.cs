@@ -16,6 +16,10 @@ namespace DBapplication
         {
             InitializeComponent();
             controllerObj = new Controller();
+            DataTable dt = controllerObj.SelectTracksID();
+            comboBox1.DataSource = dt;
+            comboBox1.DisplayMember = "ID";
+            comboBox1.ValueMember = "ID";
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
@@ -25,20 +29,24 @@ namespace DBapplication
 
         private void get_price_click(object sender, EventArgs e)
         {
-            DataTable dt = controllerObj.GetTrackPrice(Convert.ToInt32(textBox1.Text));
+            DataTable dt = controllerObj.GetTracks();
             dataGridView1.DataSource = dt;
             dataGridView1.Refresh();
         }
 
         private void modify_price_click(object sender, EventArgs e)
         {
-            int result = controllerObj.UpdateTrackPrice(Convert.ToDecimal(textBox3.Text) , Convert.ToInt32(textBox1.Text));
+            int var = Convert.ToInt32(comboBox1.SelectedValue);
+            int result = controllerObj.UpdateTrackPrice(Convert.ToDecimal(textBox3.Text) , Convert.ToInt32(comboBox1.SelectedValue));
             if (result > 0)
                 MessageBox.Show("Price Updated Successfully");
             else
                 MessageBox.Show("Failed To Update Price");
+            DataTable dt = controllerObj.GetTracks();
+            dataGridView1.DataSource = dt;
+            dataGridView1.Refresh();
         }
-        
+
         private void get_data_click(object sender, EventArgs e)
         {
             DataTable dt = controllerObj.GetCustomerData(Convert.ToInt32(textBox2.Text));
@@ -53,6 +61,11 @@ namespace DBapplication
                 MessageBox.Show("Promo-Code Updated Successfully");
             else
                 MessageBox.Show("Failed To Update Promo-Code");
+        }
+
+        private void Sales_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void button5_Click(object sender, EventArgs e)

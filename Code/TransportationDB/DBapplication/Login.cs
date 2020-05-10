@@ -46,7 +46,7 @@ namespace DBapplication
                                         //Even if it is stored in a DB, keeping passwords in it's raw form is prone to attacks
         }
 
- 
+
         private bool CheckPassword_Hash(string password)
         {
             const string salt = "r4Nd0m_5A1t";  //They are concatenated to the password to protects against rainbow table attacks.
@@ -63,14 +63,7 @@ namespace DBapplication
 
         private void Btn_Login_Click(object sender, EventArgs e)
         {
-            //int privlg = controllerObj.CheckPassword_Basic(TxtBx_username.Text, TxtBx_pass.Text);
-            //commented till database is cimplete
-            int privlg = 6; //testing the Tracks designer
-            //int privlg = 4; //testing driver
-            //int privlg = 5; //testing sales
-            //int privlg = 7; //testing marketing
-            //int privlg = 3; //testing other employees
-            //int privlg = 1; //testing Manager
+            int privlg = controllerObj.CheckPassword_Basic(TxtBx_username.Text, TxtBx_pass.Text);
 
             if (privlg > 0)
             {
@@ -105,6 +98,11 @@ namespace DBapplication
                 {
                     Marketing func = new Marketing();
                     func.Show(this);
+                }
+                else if (privlg ==100)
+                {
+                    Admin func = new Admin();
+                    func.Show();
                 }
                 TxtBx_pass.Clear();
                 TxtBx_username.Clear();
@@ -143,6 +141,17 @@ namespace DBapplication
         {
             UserSignUp func = new UserSignUp();
             func.Show(this);
+        }
+
+        private void Modify_Password_Click(object sender, EventArgs e)
+        {
+            int privlg = controllerObj.CheckPassword_Basic(TxtBx_username.Text, TxtBx_pass.Text);
+            if (privlg > 0 && privlg < 10)
+            {
+                ChangePasswords func = new ChangePasswords(TxtBx_username.Text);
+                func.Show(this);
+            }
+
         }
     }
 }

@@ -65,11 +65,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin.Designer.cs">
+      <DependentUpon>Admin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Busses.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Busses.Designer.cs">
       <DependentUpon>Busses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChangePasswords.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangePasswords.Designer.cs">
+      <DependentUpon>ChangePasswords.cs</DependentUpon>
     </Compile>
     <Compile Include="Customer.cs">
       <SubType>Form</SubType>
@@ -82,6 +94,12 @@
     </Compile>
     <Compile Include="CustomerLogin.Designer.cs">
       <DependentUpon>CustomerLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Departments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Departments.Designer.cs">
+      <DependentUpon>Departments.cs</DependentUpon>
     </Compile>
     <Compile Include="Driver.cs">
       <SubType>Form</SubType>
@@ -153,14 +171,23 @@
     <Compile Include="UserSignUp.Designer.cs">
       <DependentUpon>UserSignUp.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Admin.resx">
+      <DependentUpon>Admin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Busses.resx">
       <DependentUpon>Busses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangePasswords.resx">
+      <DependentUpon>ChangePasswords.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Customer.resx">
       <DependentUpon>Customer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomerLogin.resx">
       <DependentUpon>CustomerLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Departments.resx">
+      <DependentUpon>Departments.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Driver.resx">
       <DependentUpon>Driver.cs</DependentUpon>
