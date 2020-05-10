@@ -89,17 +89,13 @@ namespace DBapplication
 
         private void delete_Click(object sender, EventArgs e)
         {
-            int r = controllerObj.DeleteEmployee((long)comboBox4_delete_SSN.SelectedValue);
+            DataRow employee = controllerObj.SelectEmp_fromSSN((long)comboBox4_delete_SSN.SelectedValue).Rows[0];
 
-            if (r > 0)
-                MessageBox.Show("Employee deleted successfully");
-            else
-                MessageBox.Show("Error deleting employee");
-
-            comboBox4_delete_SSN.Refresh();
-            comboBox3_update_SSN.Refresh();
-            comboBox2_SSSN.Refresh();
-            comboBox4_gender.Refresh();
+            textBox1_SSN.Text = Convert.ToString(employee["SSN"]);
+            textBox2_FN.Text = (string)employee["Fname"];
+            textBox3_LN.Text = (string)employee["Lname"];
+            textBox4_Salary.Text = Convert.ToString(employee["Salary"]);
+            textBox6_address.Text = (string)employee["Address"];
 
         }
 
@@ -154,6 +150,21 @@ namespace DBapplication
             this.Hide();
             Login func = new Login();
             func.Show(this);
+        }
+
+        private void button1_deletenow_Click(object sender, EventArgs e)
+        {
+            int r = controllerObj.DeleteEmployee((long)comboBox4_delete_SSN.SelectedValue);
+
+            if (r > 0)
+                MessageBox.Show("Employee deleted successfully");
+            else
+                MessageBox.Show("Error deleting employee");
+
+            comboBox4_delete_SSN.Refresh();
+            comboBox3_update_SSN.Refresh();
+            comboBox2_SSSN.Refresh();
+            comboBox4_gender.Refresh();
         }
     }
 }
