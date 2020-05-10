@@ -16,6 +16,10 @@ namespace DBapplication
         {
             InitializeComponent();
             controllerObj = new Controller();
+            DataTable dt = controllerObj.SelectTracksID();
+            comboBox1.DataSource = dt;
+            comboBox1.DisplayMember = "ID";
+            comboBox1.ValueMember = "ID";
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
@@ -32,7 +36,8 @@ namespace DBapplication
 
         private void modify_price_click(object sender, EventArgs e)
         {
-            int result = controllerObj.UpdateTrackPrice(Convert.ToDecimal(textBox3.Text) , Convert.ToInt32(textBox1.Text));
+            int var = Convert.ToInt32(comboBox1.SelectedValue);
+            int result = controllerObj.UpdateTrackPrice(Convert.ToDecimal(textBox3.Text) , Convert.ToInt32(comboBox1.SelectedValue));
             if (result > 0)
                 MessageBox.Show("Price Updated Successfully");
             else

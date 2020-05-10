@@ -16,18 +16,28 @@ namespace DBapplication
         {
             InitializeComponent();
             controllerObj = new Controller();
+            DataTable dt = controllerObj.SelectTracksID();
+            comboBox1.DataSource = dt;
+            comboBox1.DisplayMember = "ID";
+            comboBox1.ValueMember = "ID";
+            
         }
 
         private void get_departure_time_click(object sender, EventArgs e)
         {
-            DataTable dt = controllerObj.GetDepartureTime(Convert.ToInt32(textBox1.Text));
+            DataTable dt = controllerObj.GetDepartureTime(Convert.ToInt32(comboBox1.SelectedValue));
             dataGridView1.DataSource = dt;
             dataGridView1.Refresh();
+            DataTable dt2 = controllerObj.SelectStations(Convert.ToInt32(comboBox1.SelectedValue));
+            comboBox2.DataSource = dt2;
+            comboBox2.DisplayMember = "Location";
+            comboBox2.ValueMember = "Location";
+            comboBox2.Refresh();
         }
 
         private void get_arrival_time_click(object sender, EventArgs e)
         {
-            DataTable dt = controllerObj.GetStationArrivalTime(textBox2.Text) ;
+            DataTable dt = controllerObj.GetStationArrivalTime(Convert.ToString(comboBox2.SelectedValue)) ;
             dataGridView2.DataSource = dt;
             dataGridView2.Refresh();
             
