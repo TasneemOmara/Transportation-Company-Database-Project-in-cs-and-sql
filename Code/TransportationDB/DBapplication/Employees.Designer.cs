@@ -55,6 +55,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.comboBox4_gender = new System.Windows.Forms.ComboBox();
             this.button1_update = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button1_deletenow = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -227,7 +229,7 @@
             this.delete.Name = "delete";
             this.delete.Size = new System.Drawing.Size(171, 49);
             this.delete.TabIndex = 22;
-            this.delete.Text = "Delete Employee";
+            this.delete.Text = "Retrieve Employee to get deleted";
             this.delete.UseVisualStyleBackColor = true;
             this.delete.Click += new System.EventHandler(this.delete_Click);
             // 
@@ -293,11 +295,33 @@
             this.button1_update.UseVisualStyleBackColor = true;
             this.button1_update.Click += new System.EventHandler(this.button1_update_Click);
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(952, 12);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(103, 41);
+            this.button5.TabIndex = 43;
+            this.button5.Text = "Log Out";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button1_deletenow
+            // 
+            this.button1_deletenow.Location = new System.Drawing.Point(933, 686);
+            this.button1_deletenow.Name = "button1_deletenow";
+            this.button1_deletenow.Size = new System.Drawing.Size(75, 23);
+            this.button1_deletenow.TabIndex = 44;
+            this.button1_deletenow.Text = "Delete";
+            this.button1_deletenow.UseVisualStyleBackColor = true;
+            this.button1_deletenow.Click += new System.EventHandler(this.button1_deletenow_Click);
+            // 
             // Employees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1080, 760);
+            this.Controls.Add(this.button1_deletenow);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.button1_update);
             this.Controls.Add(this.comboBox4_gender);
             this.Controls.Add(this.label10);
@@ -362,5 +386,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox comboBox4_gender;
         private System.Windows.Forms.Button button1_update;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button1_deletenow;
     }
 }

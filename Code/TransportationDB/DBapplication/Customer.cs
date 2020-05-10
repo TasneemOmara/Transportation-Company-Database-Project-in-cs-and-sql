@@ -60,9 +60,9 @@ namespace DBapplication
                 }
 
                 int TrackID = int.Parse(comboBox3_trackID.SelectedValue.ToString());
-                DataTable dtSeatsNo = controllerObj.CheckSeats(TrackID);
+                int SeatsCheck = controllerObj.CheckSeats(TrackID);
 
-                if (int.Parse(dtSeatsNo.Rows[0][0].ToString()) > 0)
+                if (SeatsCheck > 0)
                     {
                     controllerObj.BookRide(TrackID, CustomerPhone);
                     DataTable dtBP = controllerObj.GetBoardingPass(CustomerPhone);

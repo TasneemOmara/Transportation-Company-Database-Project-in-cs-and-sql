@@ -26,11 +26,13 @@ namespace DBapplication
             {
                 this.Employees.Enabled = false;
                 this.Busses.Enabled = false;
+                this.button1.Enabled = false;
             }
             else if(privilege == Privileges.BussesManager)
             {
                 this.Employees.Enabled = false;
                 this.Finances.Enabled = false;
+                this.button1.Enabled = false;
             }
         }
 
@@ -38,24 +40,35 @@ namespace DBapplication
         {
             Employees E = new Employees();
             E.Show();
+            this.Hide();
         }
 
         private void Finances_Click(object sender, EventArgs e)
         {
             Finances F = new Finances();
             F.Show();
+            this.Hide();
         }
 
         private void Busses_Click(object sender, EventArgs e)
         {
             Busses B = new Busses();
             B.Show();
+            this.Hide();
         }
 
         private void show_statistics_click(object sender, EventArgs e)
         {
             Statistics S = new Statistics();
             S.Show();
+            this.Hide();
+        }
+
+        private void button2_dep_Click(object sender, EventArgs e)
+        {
+            Departments D = new Departments();
+            D.Show();
+            this.Hide();
         }
     }
 }

@@ -61,6 +61,7 @@
             this.button2_maintainer = new System.Windows.Forms.Button();
             this.textBox1_maintainer = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -198,7 +199,7 @@
             // 
             // button1_Reset
             // 
-            this.button1_Reset.Location = new System.Drawing.Point(833, 33);
+            this.button1_Reset.Location = new System.Drawing.Point(653, 33);
             this.button1_Reset.Name = "button1_Reset";
             this.button1_Reset.Size = new System.Drawing.Size(285, 55);
             this.button1_Reset.TabIndex = 25;
@@ -222,7 +223,7 @@
             // 
             // button1_TrackBusses
             // 
-            this.button1_TrackBusses.Location = new System.Drawing.Point(430, 33);
+            this.button1_TrackBusses.Location = new System.Drawing.Point(352, 33);
             this.button1_TrackBusses.Name = "button1_TrackBusses";
             this.button1_TrackBusses.Size = new System.Drawing.Size(285, 55);
             this.button1_TrackBusses.TabIndex = 28;
@@ -356,11 +357,22 @@
             this.label11.TabIndex = 42;
             this.label11.Text = "Maintainer";
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(1000, 33);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(145, 55);
+            this.button2.TabIndex = 43;
+            this.button2.Text = "log out";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Busses
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1167, 730);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.textBox1_maintainer);
             this.Controls.Add(this.button2_maintainer);
@@ -436,5 +448,6 @@
         private System.Windows.Forms.Button button2_maintainer;
         private System.Windows.Forms.TextBox textBox1_maintainer;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button button2;
     }
 }

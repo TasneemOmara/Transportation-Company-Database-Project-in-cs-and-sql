@@ -41,7 +41,7 @@ namespace DBapplication
             dataGridView1.DataSource = dt;
             dataGridView1.Refresh();
         }
-        
+
         private void get_data_click(object sender, EventArgs e)
         {
             DataTable dt = controllerObj.GetCustomerData(Convert.ToInt32(textBox2.Text));
@@ -61,6 +61,13 @@ namespace DBapplication
         private void Sales_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Login func = new Login();
+            func.Show(this);
         }
     }
 }

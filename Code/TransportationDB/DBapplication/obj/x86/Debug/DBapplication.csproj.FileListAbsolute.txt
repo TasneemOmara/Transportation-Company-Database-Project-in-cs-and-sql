@@ -67,3 +67,10 @@ C:\Users\Omar Zidan\Desktop\Year 5\Spring\Data Base\Project\Transportation-Compa
 C:\Users\Omar Zidan\Desktop\Year 5\Spring\Data Base\Project\Transportation-Company-Database-Project-in-cs-and-sql\Code\TransportationDB\DBapplication\obj\x86\Debug\DBapplication.UserSignUp.resources
 C:\Users\Omar Zidan\Desktop\Year 5\Spring\Data Base\Project\Transportation-Company-Database-Project-in-cs-and-sql\Code\TransportationDB\DBapplication\obj\x86\Debug\DBapplication.ChangePasswords.resources
 C:\Users\Omar Zidan\Desktop\Year 5\Spring\Data Base\Project\Transportation-Company-Database-Project-in-cs-and-sql\Code\TransportationDB\DBapplication\obj\x86\Debug\DBapplication.Admin.resources
+C:\Users\T\Desktop\DB\Transportation-Company-Database-Project-in-cs-and-sql\Code\TransportationDB\DBapplication\obj\x86\Debug\DBapplication.Driver.resources
+C:\Users\T\Desktop\DB\Transportation-Company-Database-Project-in-cs-and-sql\Code\TransportationDB\DBapplication\obj\x86\Debug\DBapplication.Marketing.resources
+C:\Users\T\Desktop\DB\Transportation-Company-Database-Project-in-cs-and-sql\Code\TransportationDB\DBapplication\obj\x86\Debug\DBapplication.OtherEmployees.resources
+C:\Users\T\Desktop\DB\Transportation-Company-Database-Project-in-cs-and-sql\Code\TransportationDB\DBapplication\obj\x86\Debug\DBapplication.Sales.resources
+C:\Users\T\Desktop\DB\Transportation-Company-Database-Project-in-cs-and-sql\Code\TransportationDB\DBapplication\obj\x86\Debug\DBapplication.Statistics.resources
+C:\Users\T\Desktop\DB\Transportation-Company-Database-Project-in-cs-and-sql\Code\TransportationDB\DBapplication\obj\x86\Debug\DBapplication.UserSignUp.resources
+C:\Users\T\Desktop\DB\Transportation-Company-Database-Project-in-cs-and-sql\Code\TransportationDB\DBapplication\obj\x86\Debug\DBapplication.Departments.resources
