@@ -38,5 +38,17 @@ namespace DBapplication
             dataGridView1.DataSource = dt;
             dataGridView1.Refresh();
         }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Login func = new Login();
+            func.Show(this);
+        }
     }
 }
