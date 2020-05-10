@@ -9,7 +9,7 @@ namespace DBapplication
 {
     public class Controller
     {
-        private DBManager dbMan; // A Reference of type DBManager
+        private DBManager dbMan; // A Reference of type DBManager 
                                  // (Initially NULL; NO DBManager Object is created yet)
 
         public Controller()
@@ -23,27 +23,10 @@ namespace DBapplication
         {
 
             //Query the DB to check for username/password
-            string query = "SELECT Privelege from Login where User_Name = '" + username + "' and Password='" + password + "';";
+            string query = "SELECT priv from Users_basic where username = '" + username + "' and password='" + password + "';";
             object p = dbMan.ExecuteScalar(query);
             if (p == null) return 0;
-            else return Convert.ToInt32(p);
-        }
-
-        public int SignUp_newUser(string User, string password, int priv)
-        {
-            string query = " SELECT User_Name from Login Where User_Name = '" + User + "' ";
-            object check = dbMan.ExecuteScalar(query);
-            if (check == null)
-            {
-                string query_add = "INSERT INTO Login (User_Name, Password, Privelege) VALUES (" +
-                    "'" + User + "', " +
-                    "'" + password + "', " +
-                    "" + priv + ")";
-                return dbMan.ExecuteNonQuery(query_add);
-            }
-            else {
-                return -1;
-            }
+            else return (int)p;
         }
 
         public void TerminateConnection()
@@ -52,12 +35,138 @@ namespace DBapplication
         }
 
 
-        //By-Zidan
-        public int AddPaidMoney(decimal Money , int month)
+
+
+
+
+
+        ///////// Examples //////////////
+
+        /*
+        public DataTable SelectAllEmp()
         {
-            string query = "UPDATE Finances " +
+            string query = "SELECT * FROM Employee;";
+            return dbMan.ExecuteReader(query);
+        }
+
+
+        public int InsertProject(string Pname, int pnumber, string Plocation, int Dnum)
+        {
+            string query = "INSERT INTO Project (Pname, Pnumber, Plocation, Dnum)" +
+                            "Values ('" + Pname + "'," + pnumber + ",'" + Plocation + "'," + Dnum + ");";
+            return dbMan.ExecuteNonQuery(query);
+        }
+
+        public DataTable SelectDepNum()
+        {
+            string query= "SELECT Dnumber FROM Department;";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable SelectDepNum_and_Name()
+        {
+            string query = "SELECT Dnumber,Dname FROM Department;";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable SelectDepartments()
+        {
+            string query = "SELECT * FROM Department;";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable SelectDepLoc()
+        {
+            string query = "SELECT DISTINCT Dlocation FROM Dept_Locations;";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable SelectProject(string loc)
+        {
+            string query = "SELECT Pname,Dname "
+             + "FROM "
+             + "Department D, Project P, Dept_Locations L "
+             + "where "
+             + "P.Dnum=D.Dnumber and L.Dnumber=D.Dnumber and L.Dlocation='" + loc + "';"; 
+            
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable SelectEmployeeNames()
+        {
+            string query = "SELECT SSN, Fname+' '+Minit+'. '+Lname AS Name FROM Employee";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable SelectEmployeeNamesBySearch(string name, string sex, bool? isManager, List<int> departments)
+        {
+            string query = "SELECT SSN, Fname+' '+Minit+'. '+Lname AS Name FROM Employee WHERE (Fname+' '+Minit+'. '+Lname) LIKE '%"+name+"%'";
+            if (sex != "")
+                query += " AND Sex='" + sex + "'";
+            if (isManager != null)
+                query += " AND SSN "+(isManager.GetValueOrDefault()?"":"NOT")+" IN (SELECT Mgr_SSN FROM Department)";
+            if (departments.Count > 0)
+                query += " AND Dno IN ("+String.Join(",",departments.Select(dno => dno.ToString()).ToArray())+")";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable SelectEmployeeBySSN(int ssn)
+        {
+            string query = "SELECT * FROM Employee WHERE SSN = " + ssn;
+            return dbMan.ExecuteReader(query);
+        }
+
+        public int UpdateEmployee(int ssn, string fname, char minit, string lname, DateTime bdate, String address, String sex, int salary, int dno, int? super_ssn)
+        {
+            string query = "UPDATE Employee SET "+
+                "Fname='" + fname + "'," +
+                "Minit='" + minit + "'," +
+                "Lname='" + lname + "'," +
+                "Bdate='" + bdate.ToString("yyyy-MM-dd") + "'," +
+                "Address='" + address + "'," +
+                "Sex='" + sex + "'," +
+                "Salary=" + salary + "," +
+                "Dno=" + dno + "," +
+                "Super_SSN=" + (super_ssn==null?"NULL":super_ssn.ToString()) + "" +
+                " WHERE SSN = " + ssn;
+            return dbMan.ExecuteNonQuery(query);
+        }
+
+        public int InsertEmployee(int ssn, string fname, char minit, string lname, DateTime bdate, String address, String sex, int salary, int dno, int? super_ssn)
+        {
+            string query = "INSERT INTO Employee (SSN, Fname, Minit, Lname, Bdate, Address, Sex, Salary, Dno, Super_SSN) VALUES (" +
+                "" + ssn + ","+
+                "'" + fname + "'," +
+                "'" + minit + "'," +
+                "'" + lname + "'," +
+                "'" + bdate.ToString("yyyy-MM-dd") + "'," +
+                "'" + address + "'," +
+                "'" + sex + "'," +
+                "" + salary + "," +
+                "" + dno + "," +
+                "" + (super_ssn == null ? "NULL" : super_ssn.ToString()) + ""
+                +")";
+            return dbMan.ExecuteNonQuery(query);
+        }
+
+        public int DeleteEmployee(int ssn)
+        {
+            string query = "DELETE FROM Employee WHERE SSN=" + ssn;
+            return dbMan.ExecuteNonQuery(query);
+        }
+
+        public DataTable SelectProjectsEmployeeWorksOn(int ssn)
+        {
+            string query = "SELECT Pno, Pname, Hours FROM Works_On INNER JOIN Project ON Pno = Pnumber WHERE Essn = "+ssn;
+            return dbMan.ExecuteReader(query);
+        }*/
+
+        //By-Zidan
+        public int AddPaidMoney(int Money)
+        {
+            string query = "UPDATE Department " +
                 "SET Sales = Sales + " + Money +
-                "WHERE Month = " + month;
+                "WHERE Name = 'Finance' ";
             return dbMan.ExecuteNonQuery(query);
         }
 
@@ -149,50 +258,6 @@ namespace DBapplication
             return dbMan.ExecuteReader(query);
         }
 
-        public DataTable GetDepartureByName(string fname, string lname)
-        {
-            string query = "Select Departure_Time "
-                + "From Employee as E, Drives as D , Busses as B , [Tracks Busses Relation] as TBR, Tracks as T "
-                + "Where E.Fname = '" + fname + "' and E.Lname = '" + lname + "' and E.SSN = D.Driver_SSN and D.Bus_Number = B.Number "
-                + " and B.Number = TBR.Bus_Number and TBR.Track_ID = T.ID ";
-            return dbMan.ExecuteReader(query);
-        }
-
-        public DataTable GetScheduleByName(string fname,  string lname)
-        {
-            string query = " Select TSR.Station_Location , TSR.Track_ID , TSR.[Order] , TSR.Arrival_Time "
-                + " From Employee as E, Drives as D , Busses as B , [Tracks Busses Relation] as TBR, Tracks as T , [Track Station Relation] as TSR "
-                + " Where E.Fname = '" + fname + "' and E.Lname = '" + lname + "' and E.SSN = D.Driver_SSN and D.Bus_Number = B.Number "
-                + " and B.Number = TBR.Bus_Number and TBR.Track_ID = T.ID and T.ID = TSR.Track_ID "
-                + " Order By TSR.[Order] ";
-            return dbMan.ExecuteReader(query);
-        }
-
-        public DataTable CheckBoardingPass(int boarding_pass , string fname , string lname)
-        {
-            string query = "Select R.Boarding_Pass "
-                + " From Employee as E ,  Drives as D , Busses as B , Rides as R "
-                + " Where E.Fname = '" + fname + "' and E.Lname = '" + lname + "' and E.SSN = D.Driver_SSN and D.Bus_Number = B.Number "
-                + " and B.Number = R.Bus_Num and R.Boarding_Pass = " + boarding_pass ;
-            return dbMan.ExecuteReader(query);
-        }
-
-        public DataTable GetReservedSeatsByName(string fname , string lname)
-        {
-            string query = "Select B.Seats "
-                + "From Employee as E, Drives as D , Busses as B "
-                + "Where E.Fname = '" + fname + "' and E.Lname = '" + lname + "' and E.SSN = D.Driver_SSN and D.Bus_Number = B.Number ";
-            return dbMan.ExecuteReader(query);
-        }
-
-        public DataTable GetStationArrivalTime(string location)
-        {
-            string query = "Select TSR.Arrival_Time "
-                + "From Stations as S , [Track Station Relation] as TSR "
-                + "Where S.Location = '" + location + "' and S.Location = TSR.Station_Location ";
-            return dbMan.ExecuteReader(query);
-        }
-
 
         public int SearchForCustomerByNumber(int phone)
         {
@@ -205,7 +270,7 @@ namespace DBapplication
             {
                 return 0;
             }
-
+            
             //not a customer, should signup
             else
             {
@@ -289,7 +354,7 @@ namespace DBapplication
                 return int.Parse(dtBP.Rows[0][0].ToString());
         }
 
-
+        
         public int PreviousPromoChecker(int CustomerNumber)
         {
             string query = "Select [Promo_Codes] From [Customer] WHERE [Phone] =" + CustomerNumber + "";
@@ -315,8 +380,8 @@ namespace DBapplication
             return dbMan.ExecuteReader(query);
         }
 
-
-
+        
+ 
 
         //Tasneem
 
@@ -415,15 +480,7 @@ namespace DBapplication
 
         public DataTable SelectAllTracks()
         {
-            string query = "SELECT * FROM Tracks, Busses, Stations, [Tracks Busses Relation] as TBR, [Track Station Relation] as TSR" +
-            " WHERE Number = Bus_Number and TBR.Track_ID = ID and TSR.Station_Location  = Location";
-            return dbMan.ExecuteReader(query);
-        }
-
-        public DataTable SelectAllTracksBusses()
-        {
-            string query = "SELECT * FROM Tracks, Busses, [Tracks Busses Relation] " +
-            " WHERE Number = Bus_Number and Track_ID = ID";
+            string query = "SELECT * FROM Tracks;";
             return dbMan.ExecuteReader(query);
         }
 
@@ -433,95 +490,32 @@ namespace DBapplication
             return dbMan.ExecuteReader(query);
         }
 
-        public DataTable SelectBussesNum(int TrackID)
-        {
-            string query = "SELECT Number FROM Busses, [Tracks Busses Relation] WHERE Bus_Number = Number and Track_ID= " + TrackID;
-            return dbMan.ExecuteReader(query);
-        }
         public DataTable SelectBussesNum()
         {
-            string query = "SELECT Number FROM Busses ";
+            string query = "SELECT Number FROM Busses;";
             return dbMan.ExecuteReader(query);
         }
 
-        public DataTable SelectStations(int ID)
+        public DataTable SelectStations()
         {
-            string query = "SELECT Location FROM Stations, Tracks, [Track Station Relation]  WHERE  " +
-                " Station_Location = Location and Track_ID = ID and Track_ID="+ ID;
+            string query = "SELECT Location FROM Stations;";
             return dbMan.ExecuteReader(query);
         }
 
-        public DataTable SelectReservedSeats_TrackID_BusNumber(int ID, long BusNo)
+        public DataTable SelectReservedSeats_TrackID_BusNumber(int ID, int BusNo)
         {
-            string query = "Select Seats " +
-            " from Busses, Tracks, [Tracks Busses Relation] " +
-            " Where Number = Bus_Number and Track_ID = ID and " +
-            " ID =" + ID + " and Number =" + BusNo;
+            string query = "Select Seats" +
+            "from Busses, Tracks, [Tracks Busses Relation]" +
+            "Where Number = Bus_Number and Track_ID = ID and " +
+            "ID =" + ID + "and Number =" + BusNo;
             return dbMan.ExecuteReader(query);
         }
 
         public DataTable Select_DepartureTime_ID(int ID)
         {
-            string query = "Select Departure_Time " +
-            " from Tracks " +
-            " Where ID =" + ID;
-            return dbMan.ExecuteReader(query);
-        }
-
-        public DataTable HeighestSalesMonth()
-        {
-            string query = "Select MAX(Sales) "
-                + "From Finances ";
-            return dbMan.ExecuteReader(query);
-        }
-
-        public DataTable GetMonthBySales(decimal value)
-        {
-            string query = "Select [Month] "
-                + "From Finances "
-                + "Where Sales = " + value;
-            return dbMan.ExecuteReader(query);
-        }
-        public DataTable HeighestExpensesMonth()
-        {
-            string query = "Select MAX(Expenses) "
-                + "From Finances ";
-            return dbMan.ExecuteReader(query);
-        }
-
-        public DataTable GetMonthByExpenses(decimal value)
-        {
-            string query = "Select [Month] "
-                + "From Finances "
-                + "Where Expenses = " + value;
-            return dbMan.ExecuteReader(query);
-        }
-        public DataTable HeighestProfitMonth()
-        {
-            string query = "Select MAX( Sales - Expenses) "
-                + "From Finances ";
-            return dbMan.ExecuteReader(query);
-        }
-
-        public DataTable GetMonthBYProfit(decimal value)
-        {
-            string query = "Select [Month] "
-                + "From Finances "
-                + "Where ([Sales] - [Expenses]) = " + value;
-            return dbMan.ExecuteReader(query);
-        }
-
-        public DataTable GetAvergeProfit()
-        {
-            string query = "Select AVG([Sales] - [Expenses]) "
-                + "from Finances ";
-            return dbMan.ExecuteReader(query);
-        }
-
-        public DataTable GetAvergeSalary()
-        {
-            string query = "Select AVG([Salary]) "
-                + "from Employee ";
+            string query = "Select Departure_Time" +
+            "from Tracks" +
+            "Where ID =" + ID;
             return dbMan.ExecuteReader(query);
         }
 
@@ -558,89 +552,5 @@ namespace DBapplication
                 return 1;
             }
         }
-        public DataTable GetAvergeSalaryForMales()
-        {
-            string query = "Select AVG([Salary]) "
-                + "from Employee "
-                + "Where Gender =  'Male' ";
-            return dbMan.ExecuteReader(query);
-        }
-
-        public DataTable GetAvergeSalaryForFemales()
-        {
-            string query = "Select AVG([Salary]) "
-                + "from Employee "
-                + "Where Gender =  'Female' ";
-            return dbMan.ExecuteReader(query);
-        }
-
-        public DataTable GetEmployeesNumberInEachDepartment()
-        {
-            string query = "Select Dno , count(SSN) as [Employess Count] from Employee group by Dno ";
-            return dbMan.ExecuteReader(query);
-        }
-
-        public DataTable GetNumberOfCustomersWithPromoCodes()
-        {
-            string query = "Select count(Promo_Codes) "
-                + "from Customer "
-                + "where Promo_Codes != 'NULL' ";
-            return dbMan.ExecuteReader(query);
-        }
-
-        public DataTable GetAverageFrequencyOfCustomers()
-        {
-            string query = "Select AVG(Frequency) from Customer ";
-            return dbMan.ExecuteReader(query);
-        }
-
-        public DataTable SumOfCustomers()
-        {
-            string query = "Select Count(*) from Customer ";
-            return dbMan.ExecuteReader(query);
-        }
-
-        public DataTable GetNameMostFrequentStationAmongTracks()
-        {
-            string query = "Select Station_Location , count(Track_ID) as frequency "
-                + "From[Track Station Relation] "
-                + "Group by Station_Location "
-                + "Order by frequency DESC ";
-            return dbMan.ExecuteReader(query);
-        }
-
-        public DataTable GetSumOfBusses()
-        {
-            string query = "select count(*) from Busses ";
-            return dbMan.ExecuteReader(query);
-        }
-
-
-        public DataTable Select_ArrivalTime_ID(int ID, string station)
-        {
-
-            string query = "Select Arrival_Time " +
-            " from Tracks, [Track Station Relation] " +
-            " Where Track_ID = ID and Station_Location = '" + station + "' and ID = " + ID;
-            return dbMan.ExecuteReader(query);
-        }
-
-        public DataTable GetLastMaintainence(long bus)
-        {
-            string query = "Select Last_Maintained "
-                + "From Busses "
-                + "Where Number = " + bus;
-            return dbMan.ExecuteReader(query);
-        }
-
-        public DataTable SelectMaintainer(long bus)
-        {
-            string query = "Select Fname, Lname "
-                + "From Busses, Maintain, Employee "
-                + "Where Number = " + bus + " and Bus_NO = Number and Emp_Ssn = SSN ";
-            return dbMan.ExecuteReader(query);
-        }
-
-
     }
 }

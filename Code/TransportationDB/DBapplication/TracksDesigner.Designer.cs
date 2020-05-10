@@ -62,7 +62,6 @@
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.button5_Logout = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1_addstation
@@ -382,15 +381,6 @@
             this.groupBox4.TabIndex = 28;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Departure Date and Time";
-            // button5_Logout
-            // 
-            this.button5_Logout.Location = new System.Drawing.Point(1047, 33);
-            this.button5_Logout.Name = "button5_Logout";
-            this.button5_Logout.Size = new System.Drawing.Size(103, 41);
-            this.button5_Logout.TabIndex = 49;
-            this.button5_Logout.Text = "Log Out";
-            this.button5_Logout.UseVisualStyleBackColor = true;
-            this.button5_Logout.Click += new System.EventHandler(this.button5_Logout_Click);
             // 
             // TracksDesigner
             // 
@@ -401,28 +391,6 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.ClientSize = new System.Drawing.Size(1176, 644);
-            this.Controls.Add(this.button5_Logout);
-            this.Controls.Add(this.textBox3_price);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.comboBox5_at3);
-            this.Controls.Add(this.comboBox6_at2);
-            this.Controls.Add(this.comboBox7_at1);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.comboBox4_station3);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.comboBox3_station2);
-            this.Controls.Add(this.comboBox2_station1);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBox1_DT);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.textBox2_trackID);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.button2_addATrack);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "TracksDesigner";
@@ -472,6 +440,5 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Button button5_Logout;
     }
 }

@@ -273,13 +273,6 @@ namespace DBapplication
         {
 
         }
-
-        private void button5_Logout_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Login func = new Login();
-            func.Show(this);
-        }
     }
 
 
