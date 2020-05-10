@@ -63,9 +63,9 @@ namespace DBapplication
 
         private void Btn_Login_Click(object sender, EventArgs e)
         {
-            int privlg = controllerObj.CheckPassword_Basic(TxtBx_username.Text, TxtBx_pass.Text);
+            //int privlg = controllerObj.CheckPassword_Basic(TxtBx_username.Text, TxtBx_pass.Text);
             //commented till database is cimplete
-            //int privlg = 6; //testing the Tracks designer
+            int privlg = 6; //testing the Tracks designer
             //int privlg = 4; //testing driver
             //int privlg = 5; //testing sales
             //int privlg = 7; //testing marketing
