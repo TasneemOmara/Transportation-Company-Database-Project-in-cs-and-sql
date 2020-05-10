@@ -251,9 +251,9 @@
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(7, 102);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(144, 13);
+            this.label19.Size = new System.Drawing.Size(155, 13);
             this.label19.TabIndex = 18;
-            this.label19.Text = "The average salary for Males";
+            this.label19.Text = "The average salary for Females";
             // 
             // label20
             // 
