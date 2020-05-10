@@ -52,5 +52,10 @@ namespace DBapplication
             B.Show();
         }
 
+        private void show_statistics_click(object sender, EventArgs e)
+        {
+            Statistics S = new Statistics();
+            S.Show();
+        }
     }
 }

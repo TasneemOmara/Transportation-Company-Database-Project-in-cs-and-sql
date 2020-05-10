@@ -69,7 +69,7 @@ namespace DBapplication
             //int privlg = 4; //testing driver
             //int privlg = 5; //testing sales
             //int privlg = 7; //testing marketing
-            int privlg = 3; //testing other employees
+            //int privlg = 3; //testing other employees
             //int privlg = 1; //testing Manager
 
             if (privlg > 0)

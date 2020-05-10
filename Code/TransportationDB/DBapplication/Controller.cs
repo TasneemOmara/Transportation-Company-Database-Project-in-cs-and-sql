@@ -162,11 +162,11 @@ namespace DBapplication
         }*/
 
         //By-Zidan
-        public int AddPaidMoney(decimal Money)
+        public int AddPaidMoney(decimal Money , int month)
         {
-            string query = "UPDATE Department " +
+            string query = "UPDATE Finances " +
                 "SET Sales = Sales + " + Money +
-                "WHERE Name = 'Finance' ";
+                "WHERE Month = " + month;
             return dbMan.ExecuteNonQuery(query);
         }
 
@@ -562,5 +562,120 @@ namespace DBapplication
             "Where ID =" + ID;
             return dbMan.ExecuteReader(query);
         }
+
+        public DataTable HeighestSalesMonth()
+        {
+            string query = "Select MAX(Sales) "
+                + "From Finances ";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable GetMonthBySales(decimal value)
+        {
+            string query = "Select [Month] "
+                + "From Finances "
+                + "Where Sales = " + value;
+            return dbMan.ExecuteReader(query);
+        }
+        public DataTable HeighestExpensesMonth()
+        {
+            string query = "Select MAX(Expenses) "
+                + "From Finances ";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable GetMonthByExpenses(decimal value)
+        {
+            string query = "Select [Month] "
+                + "From Finances "
+                + "Where Expenses = " + value;
+            return dbMan.ExecuteReader(query);
+        }
+        public DataTable HeighestProfitMonth()
+        {
+            string query = "Select MAX( Sales - Expenses) "
+                + "From Finances ";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable GetMonthBYProfit(decimal value)
+        {
+            string query = "Select [Month] "
+                + "From Finances "
+                + "Where ([Sales] - [Expenses]) = " + value;
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable GetAvergeProfit()
+        {
+            string query = "Select AVG([Sales] - [Expenses]) "
+                + "from Finances ";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable GetAvergeSalary()
+        {
+            string query = "Select AVG([Salary]) "
+                + "from Employee ";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable GetAvergeSalaryForMales()
+        {
+            string query = "Select AVG([Salary]) "
+                + "from Employee "
+                + "Where Gender =  'Male' ";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable GetAvergeSalaryForFemales()
+        {
+            string query = "Select AVG([Salary]) "
+                + "from Employee "
+                + "Where Gender =  'Female' ";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable GetEmployeesNumberInEachDepartment()
+        {
+            string query = "Select Dno , count(SSN) as [Employess Count] from Employee group by Dno ";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable GetNumberOfCustomersWithPromoCodes()
+        {
+            string query = "Select count(Promo_Codes) "
+                + "from Customer "
+                + "where Promo_Codes != 'NULL' ";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable GetAverageFrequencyOfCustomers()
+        {
+            string query = "Select AVG(Frequency) from Customer ";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable SumOfCustomers()
+        {
+            string query = "Select Count(*) from Customer ";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable GetNameMostFrequentStationAmongTracks()
+        {
+            string query = "Select Station_Location , count(Track_ID) as frequency "
+                + "From[Track Station Relation] "
+                + "Group by Station_Location "
+                + "Order by frequency DESC ";
+            return dbMan.ExecuteReader(query);
+        }
+        
+        public DataTable GetSumOfBusses()
+        {
+            string query = "select count(*) from Busses ";
+            return dbMan.ExecuteReader(query);
+        }
+
     }
 }

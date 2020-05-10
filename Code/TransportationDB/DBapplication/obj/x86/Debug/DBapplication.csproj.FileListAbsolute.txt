@@ -63,3 +63,4 @@ C:\Users\Ahmed Marouf\Documents\GitHub\Transportation-Company-Database-Project-i
 C:\Users\Ahmed Marouf\Documents\GitHub\Transportation-Company-Database-Project-in-cs-and-sql\Code\TransportationDB\DBapplication\bin\Debug\DBapplication.exe.config
 C:\Users\Ahmed Marouf\Documents\GitHub\Transportation-Company-Database-Project-in-cs-and-sql\Code\TransportationDB\DBapplication\bin\Debug\DBapplication.exe
 C:\Users\Ahmed Marouf\Documents\GitHub\Transportation-Company-Database-Project-in-cs-and-sql\Code\TransportationDB\DBapplication\bin\Debug\DBapplication.pdb
+C:\Users\Omar Zidan\Desktop\Year 5\Spring\Data Base\Project\Transportation-Company-Database-Project-in-cs-and-sql\Code\TransportationDB\DBapplication\obj\x86\Debug\DBapplication.Statistics.resources
