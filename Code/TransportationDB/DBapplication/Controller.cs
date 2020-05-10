@@ -518,5 +518,39 @@ namespace DBapplication
             "Where ID =" + ID;
             return dbMan.ExecuteReader(query);
         }
+
+        public void AddStation(string location, string name)
+        {
+            string query = "Insert into [Stations] ([Location], [Name]) Values ('" + location + "', '" + name + "')";
+            dbMan.ExecuteReader(query);
+        }
+
+        public void AddTrack(string DepartureTime, double Price, int ID, string st1, string st2, string st3, string at1, string at2, string at3)
+        {
+            string query0 = "Insert into [Tracks] ([Departure_Time], [Price], [ID]) Values ('" + DepartureTime + "', " + Price + ", " + ID + ")";
+            string query1 = "Insert into [Track Station Relation] ([Station_Location], [Track_ID], [Order], [Arrival_Time]) Values ((Select [Location] from [Stations] WHERE [Name] = '" + st1 + "')," + ID + ", 1 , '" + at1 + "')";
+            string query2 = "Insert into [Track Station Relation] ([Station_Location], [Track_ID], [Order], [Arrival_Time]) Values ((Select [Location] from [Stations] WHERE [Name] = '" + st2 + "')," + ID + ", 2 , '" + at2 + "')";
+            string query3 = "Insert into [Track Station Relation] ([Station_Location], [Track_ID], [Order], [Arrival_Time]) Values ((Select [Location] from [Stations] WHERE [Name] = '" + st3 + "')," + ID + ", 3 , '" + at3 + "')";
+            dbMan.ExecuteReader(query0);
+            dbMan.ExecuteReader(query1);
+            dbMan.ExecuteReader(query2);
+            dbMan.ExecuteReader(query3);
+        }
+
+        public int TrackCheckerByID(int ID)
+        {
+            string query = "Select [ID] From [Tracks] WHERE [ID] = " + ID + "";
+            DataTable IDHolder = dbMan.ExecuteReader(query);
+
+            if (IDHolder == null)
+            {
+                return 0;
+            }
+
+            else
+            {
+                return 1;
+            }
+        }
     }
 }
