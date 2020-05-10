@@ -274,11 +274,96 @@ namespace DBapplication
 
         }
 
-        private void button5_Logout_Click(object sender, EventArgs e)
+
+        private void groupBox6_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox5_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label15_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label16_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox7_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label16_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_price_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_LogOut_Click(object sender, EventArgs e)
         {
             this.Hide();
             Login func = new Login();
             func.Show(this);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int PlatesNumber = int.Parse(textBox1.Text.ToString());
+            int SeatsNumber = int.Parse(textBox2.Text.ToString());
+            string BusType = textBox3.Text.ToString();
+
+            controllerObj.AddBuss(PlatesNumber, SeatsNumber, BusType);
+            MessageBox.Show("Buss Added!" + newLine + "Plates Number: " + PlatesNumber + newLine + "Seats Number: " + SeatsNumber + newLine + "Type: " + BusType);
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string MaintDate = dateTimePicker2.Value.Date.ToString("yyyy-MM-dd");
+            string SpareParts = textBox4.Text.ToString();
+            int BusNumber = int.Parse(textBox7.Text.ToString());
+
+            controllerObj.EditExistingBus(BusNumber, MaintDate, SpareParts);
+            MessageBox.Show(SpareParts);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            int PlatesNumber = int.Parse(textBox5.Text.ToString());
+            int TrackID = int.Parse(textBox6.Text.ToString());
+
+            controllerObj.AssignBusToTrack(PlatesNumber, TrackID);
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label19_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 

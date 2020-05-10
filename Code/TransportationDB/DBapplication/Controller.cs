@@ -41,7 +41,8 @@ namespace DBapplication
                     "" + priv + ")";
                 return dbMan.ExecuteNonQuery(query_add);
             }
-            else {
+            else
+            {
                 return -1;
             }
         }
@@ -53,7 +54,7 @@ namespace DBapplication
 
 
         //By-Zidan
-        public int AddPaidMoney(decimal Money , int month)
+        public int AddPaidMoney(decimal Money, int month)
         {
             string query = "UPDATE Finances " +
                 "SET Sales = Sales + " + Money +
@@ -158,7 +159,7 @@ namespace DBapplication
             return dbMan.ExecuteReader(query);
         }
 
-        public DataTable GetScheduleByName(string fname,  string lname)
+        public DataTable GetScheduleByName(string fname, string lname)
         {
             string query = " Select TSR.Station_Location , TSR.Track_ID , TSR.[Order] , TSR.Arrival_Time "
                 + " From Employee as E, Drives as D , Busses as B , [Tracks Busses Relation] as TBR, Tracks as T , [Track Station Relation] as TSR "
@@ -168,16 +169,16 @@ namespace DBapplication
             return dbMan.ExecuteReader(query);
         }
 
-        public DataTable CheckBoardingPass(int boarding_pass , string fname , string lname)
+        public DataTable CheckBoardingPass(int boarding_pass, string fname, string lname)
         {
             string query = "Select R.Boarding_Pass "
                 + " From Employee as E ,  Drives as D , Busses as B , Rides as R "
                 + " Where E.Fname = '" + fname + "' and E.Lname = '" + lname + "' and E.SSN = D.Driver_SSN and D.Bus_Number = B.Number "
-                + " and B.Number = R.Bus_Num and R.Boarding_Pass = " + boarding_pass ;
+                + " and B.Number = R.Bus_Num and R.Boarding_Pass = " + boarding_pass;
             return dbMan.ExecuteReader(query);
         }
 
-        public DataTable GetReservedSeatsByName(string fname , string lname)
+        public DataTable GetReservedSeatsByName(string fname, string lname)
         {
             string query = "Select B.Seats "
                 + "From Employee as E, Drives as D , Busses as B "
@@ -243,7 +244,7 @@ namespace DBapplication
             return dbMan.ExecuteReader(query);
         }
 
-        public DataTable SearchRoutes(DateTime searchdate ,string pickup, string dropoff)
+        public DataTable SearchRoutes(DateTime searchdate, string pickup, string dropoff)
         {
             string query = "SELECT * FROM (SELECT [Track_ID], [Order], [Station_Location], [Price], [Departure_Time], [Arrival_Time] FROM Tracks INNER JOIN [Track Station Relation] ON [Tracks].[ID] = [Track Station Relation].[Track_ID] WHERE Convert(DATE, Departure_Time) = '" + searchdate + "') AS NarrowedDown WHERE [Station_Location] = '" + dropoff + "' AND [Order] > 1";
             return dbMan.ExecuteReader(query);
@@ -276,7 +277,7 @@ namespace DBapplication
         {
             string query = "Insert Into [Rides] ([Bus_Num], [Customer_Phone])"
                          + "Values "
-                         + "((Select[Bus_Number] From[Tracks Busses Relation] WHERE[Track_ID] = " + TrackID + "),"  + CustomerNumber + ")";
+                         + "((Select[Bus_Number] From[Tracks Busses Relation] WHERE[Track_ID] = " + TrackID + ")," + CustomerNumber + ")";
             return dbMan.ExecuteNonQuery(query);
         }
 
@@ -317,6 +318,24 @@ namespace DBapplication
             string query = "UPDATE [Customer] Set [Promo_Codes] = '" + newpromo + "' Where [Phone] =" + CustomerNumber + "";
             dbMan.ExecuteReader(query);
         }
+
+        public void UpdateSeats(int TrackID, int argument)
+        {
+            string query;
+
+            if (argument == 0)
+            {
+                query = "UPDATE [Busses] Set [Seats] = [Seats] - 1 Where [Number] = (SELECT [Bus_Number] FROM [Tracks Busses Relation] WHERE [Track_ID] = " + TrackID + ")";
+            }
+
+            else
+            {
+                query = "UPDATE [Busses] Set [Seats] = [Seats] + 1 Where [Number] = (SELECT [Bus_Number] FROM [Tracks Busses Relation] WHERE [Track_ID] = " + TrackID + ")";
+            }
+
+            dbMan.ExecuteReader(query);
+        }
+
 
         public DataTable GetCustomerNameByPhone(int CustomerNumber)
         {
@@ -456,7 +475,7 @@ namespace DBapplication
         public DataTable SelectStations(int ID)
         {
             string query = "SELECT Location FROM Stations, Tracks, [Track Station Relation]  WHERE  " +
-                " Station_Location = Location and Track_ID = ID and Track_ID="+ ID;
+                " Station_Location = Location and Track_ID = ID and Track_ID=" + ID;
             return dbMan.ExecuteReader(query);
         }
 
@@ -651,5 +670,36 @@ namespace DBapplication
         }
 
 
+        public void AddBuss(int PlatesNumber, int SeatsNumber, string BusType)
+        {
+            string query = "INSERT INTO Busses (Number, Seats, Type) VALUES (" +
+                "" + PlatesNumber + " , " +
+                   + SeatsNumber +  " , " +
+                "'" + BusType + "'"
+                + ")";
+            dbMan.ExecuteReader(query);
+        }
+
+        public void EditExistingBus(int BusNumber, string MaintDate, string SpareParts)
+        {
+            string query = "UPDATE Busses "
+                + "SET Last_Maintained = '" + MaintDate +"'"
+                + "where Number = " + BusNumber +"";
+            string query2 = "UPDATE Busses "
+                + "SET Spare_Parts = '" + SpareParts + "'"
+                + "where Number = " + BusNumber + "";
+            
+            dbMan.ExecuteReader(query);
+            dbMan.ExecuteReader(query2);
+        }
+
+        public void AssignBusToTrack(int PlatesNumber, int TrackID)
+        {
+            string query = "INSERT INTO [Tracks Busses Relation] (Bus_Number, Track_ID) VALUES (" +
+                "" + PlatesNumber + " , " +
+                "" + TrackID + ""
+                + ")";
+            dbMan.ExecuteReader(query);
+        }
     }
 }

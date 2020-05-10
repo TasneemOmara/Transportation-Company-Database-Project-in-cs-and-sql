@@ -65,6 +65,7 @@ namespace DBapplication
                 if (SeatsCheck > 0)
                     {
                     controllerObj.BookRide(TrackID, CustomerPhone);
+                    controllerObj.UpdateSeats(TrackID, 0);
                     DataTable dtBP = controllerObj.GetBoardingPass(CustomerPhone);
                     textBox1_boardingPass.Text = dtBP.Rows[0][0].ToString();
                     textBox1_boardingPass.Refresh();
