@@ -36,7 +36,7 @@ namespace DBapplication
             controllerObj = new Controller(); // Create the Controler Object
         }
 
-/*        //checks the username/password and returns the privlidges associated with this user
+       //checks the username/password and returns the privlidges associated with this user
         //Returns 0 in case of error
         private int CheckPassword_Basic(string username, string password)
         {
@@ -46,7 +46,7 @@ namespace DBapplication
                                         //Even if it is stored in a DB, keeping passwords in it's raw form is prone to attacks
         }
 
-  */
+ 
         private bool CheckPassword_Hash(string password)
         {
             const string salt = "r4Nd0m_5A1t";  //They are concatenated to the password to protects against rainbow table attacks.
@@ -63,7 +63,7 @@ namespace DBapplication
 
         private void Btn_Login_Click(object sender, EventArgs e)
         {
-            //int privlg = controllerObj.CheckPassword_Basic(TxtBx_username.Text, TxtBx_pass.Text);
+            int privlg = controllerObj.CheckPassword_Basic(TxtBx_username.Text, TxtBx_pass.Text);
             //commented till database is cimplete
             //int privlg = 6; //testing the Tracks designer
             //int privlg = 4; //testing driver
@@ -137,6 +137,12 @@ namespace DBapplication
                 _loggedin = true;
                 CustomerLogin func = new CustomerLogin();
                 func.Show(this);
+        }
+
+        private void button1_signup_Click(object sender, EventArgs e)
+        {
+            UserSignUp func = new UserSignUp();
+            func.Show(this);
         }
     }
 }
