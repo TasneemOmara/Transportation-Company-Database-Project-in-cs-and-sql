@@ -608,6 +608,30 @@ namespace DBapplication
             return dbMan.ExecuteReader(query);
         }
 
+        public DataTable GetTracks()
+        {
+            string query = " select * from Tracks ";
+            return dbMan.ExecuteReader(query);
+        }
 
+        public DataTable GetLoginInfoByUsername(string username)
+        {
+            string query = " Select [User_Name] , Password from Login Where [User_Name] = '" + username + "' ";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public int UpdatePassword(string username , string newpass)
+        {
+            string query = "Update Login "
+                + "Set Password =  '" + newpass + "' "
+                + "Where [User_Name] = '" + username + "' " ;
+            return dbMan.ExecuteNonQuery(query);
+        }
+
+        public int MakeAdmin(string username)
+        {
+            string query = "Update Login Set [Privelege] = 100 Where [User_Name] = '" + username + "' ";
+            return dbMan.ExecuteNonQuery(query);
+        }
     }
 }

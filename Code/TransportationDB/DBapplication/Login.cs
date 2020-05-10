@@ -71,6 +71,7 @@ namespace DBapplication
             //int privlg = 7; //testing marketing
             //int privlg = 3; //testing other employees
             //int privlg = 1; //testing Manager
+            
 
             if (privlg > 0)
             {
@@ -105,6 +106,11 @@ namespace DBapplication
                 {
                     Marketing func = new Marketing();
                     func.Show(this);
+                }
+                else if (privlg ==100)
+                {
+                    Admin func = new Admin();
+                    func.Show();
                 }
                 TxtBx_pass.Clear();
                 TxtBx_username.Clear();
@@ -143,6 +149,17 @@ namespace DBapplication
         {
             UserSignUp func = new UserSignUp();
             func.Show(this);
+        }
+
+        private void Modify_Password_Click(object sender, EventArgs e)
+        {
+            int privlg = controllerObj.CheckPassword_Basic(TxtBx_username.Text, TxtBx_pass.Text);
+            if (privlg > 0 && privlg < 10)
+            {
+                ChangePasswords func = new ChangePasswords(TxtBx_username.Text);
+                func.Show(this);
+            }
+            
         }
     }
 }

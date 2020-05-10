@@ -25,7 +25,7 @@ namespace DBapplication
 
         private void get_price_click(object sender, EventArgs e)
         {
-            DataTable dt = controllerObj.GetTrackPrice(Convert.ToInt32(textBox1.Text));
+            DataTable dt = controllerObj.GetTracks();
             dataGridView1.DataSource = dt;
             dataGridView1.Refresh();
         }
@@ -37,6 +37,9 @@ namespace DBapplication
                 MessageBox.Show("Price Updated Successfully");
             else
                 MessageBox.Show("Failed To Update Price");
+            DataTable dt = controllerObj.GetTracks();
+            dataGridView1.DataSource = dt;
+            dataGridView1.Refresh();
         }
         
         private void get_data_click(object sender, EventArgs e)
@@ -53,6 +56,11 @@ namespace DBapplication
                 MessageBox.Show("Promo-Code Updated Successfully");
             else
                 MessageBox.Show("Failed To Update Promo-Code");
+        }
+
+        private void Sales_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
