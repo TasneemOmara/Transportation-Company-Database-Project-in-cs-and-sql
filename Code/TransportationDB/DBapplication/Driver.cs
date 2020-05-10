@@ -20,7 +20,9 @@ namespace DBapplication
 
         private void pay_click(object sender, EventArgs e)
         {
-            int result = controllerObj.AddPaidMoney(Convert.ToDecimal(textBox1.Text));
+            DateTime dt = DateTime.Now;
+            int month = Convert.ToInt32(dt.Month);
+            int result = controllerObj.AddPaidMoney(Convert.ToDecimal(textBox1.Text) , month);
             if (result > 0)
                 MessageBox.Show("Paid Money Added Successfully");
             else
