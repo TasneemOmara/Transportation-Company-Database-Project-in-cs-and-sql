@@ -58,6 +58,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.button1_SignOut = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -85,7 +86,7 @@
             // 
             // button2_addATrack
             // 
-            this.button2_addATrack.Location = new System.Drawing.Point(169, 455);
+            this.button2_addATrack.Location = new System.Drawing.Point(19, 455);
             this.button2_addATrack.Margin = new System.Windows.Forms.Padding(2);
             this.button2_addATrack.Name = "button2_addATrack";
             this.button2_addATrack.Size = new System.Drawing.Size(325, 65);
@@ -382,11 +383,23 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Departure Date and Time";
             // 
+            // button1_SignOut
+            // 
+            this.button1_SignOut.Location = new System.Drawing.Point(508, 455);
+            this.button1_SignOut.Margin = new System.Windows.Forms.Padding(2);
+            this.button1_SignOut.Name = "button1_SignOut";
+            this.button1_SignOut.Size = new System.Drawing.Size(144, 65);
+            this.button1_SignOut.TabIndex = 29;
+            this.button1_SignOut.Text = "Sign Out";
+            this.button1_SignOut.UseVisualStyleBackColor = true;
+            this.button1_SignOut.Click += new System.EventHandler(this.button1_SignOut_Click);
+            // 
             // TracksDesigner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(700, 535);
+            this.Controls.Add(this.button1_SignOut);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -440,5 +453,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button button1_SignOut;
     }
 }
