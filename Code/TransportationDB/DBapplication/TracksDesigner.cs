@@ -273,11 +273,6 @@ namespace DBapplication
         {
 
         }
-
-        private void button1_SignOut_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 
 
