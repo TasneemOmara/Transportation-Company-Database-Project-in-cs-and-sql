@@ -257,11 +257,20 @@ namespace DBapplication
         }
 
 
-
-        public DataTable CheckSeats(int TrackID)
+        public int CheckSeats(int TrackID)
         {
             string query = "Select [Seats] from [Busses] WHERE [Number] = (Select [Bus_Number] From [Tracks Busses Relation] WHERE [Track_ID] = " + TrackID + ")";
-            return dbMan.ExecuteReader(query);
+            DataTable SeatHolder = dbMan.ExecuteReader(query);
+
+            if (SeatHolder != null)
+            {
+                return 1; //seats available
+            }
+
+            else
+            {
+                return 0;
+            }
         }
 
         public int BookRide(int TrackID, int CustomerNumber)
